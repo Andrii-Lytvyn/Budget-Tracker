@@ -1,5 +1,7 @@
 import classes.Category;
 import classes.Users;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class BudgetTracker {
     public static List<Category> categories = new ArrayList<>();
     public static List<Users> users = new ArrayList<>();
     public static void main(String[] args) {
+        File BudgetFile = new File("src/res/budget.txt");
 
     }
 }

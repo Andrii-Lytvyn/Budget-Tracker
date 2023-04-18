@@ -48,10 +48,9 @@ public class Submenu {
             System.out.print(Colors.WHITE_BOLD_BRIGHT + "Choose command: " + Colors.RESET);
             String key = br.readLine();
             switch (key) {
-                case "1": {
-                    Comparator<Record> comparator = new TaskByAutorComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
+                case "1": { // sort by ID
+                    clearAll();
+                    Output.printList(Operations.sortByID(records));
                     break;
                 }
                 case "2": {

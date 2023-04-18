@@ -50,28 +50,24 @@ public class Submenu {
             System.out.print(Colors.WHITE_BOLD_BRIGHT + "Choose command: " + Colors.RESET);
             String key = br.readLine();
             switch (key) {
-                case "1": {
-                    Comparator<Record> comparator = new TaskByAutorComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
+                case "1": { // sort by ID
+                    clearAll();
+                    Output.printList(Operations.sortByID(records));
                     break;
                 }
                 case "2": {
-                    Comparator<Task> comparator = new TaskByExecutorComparator();
-                    Collections.sort(tasks, comparator);
-                    refresh(tasks);
+                    clearAll();
+                    Output.printList(Operations.sortByUser(records));
                     break;
                 }
                 case "3": {
-                    Comparator<Task> comparator = new TaskByTitleComparator();
-                    Collections.sort(tasks, comparator);
-                    refresh(tasks);
+                    clearAll();
+                    Output.printList(Operations.sortByCategory(records));
                     break;
                 }
                 case "4": {
-                    Comparator<Task> comparator = new TaskByPriorityComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
+                    clearAll();
+                    Output.printList(Operations.sortByAmount(records));
                     break;
                 }
                 case "5": {

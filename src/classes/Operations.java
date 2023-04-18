@@ -172,6 +172,20 @@ public class Operations {
   }
 
   /**
+   * Sort LIst of All Records by Date
+   *
+   * @param records   List of Record with payments
+   * @return new sorted LIst of Records
+   */
+  public static List<Record> sortByDate(List<Record> records) {
+    List<Record> result;
+    result = records.stream()
+        .sorted(Comparator.comparing(Record::getDate))
+        .collect(Collectors.toList());
+    return result;
+  }
+
+  /**
    * Sort part of LIst of Records by User in period
    *
    * @param records   List of Record with payments
@@ -184,6 +198,20 @@ public class Operations {
     result = records.stream()
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
+        .sorted(Comparator.comparing(Record::getUser))
+        .collect(Collectors.toList());
+    return result;
+  }
+
+  /**
+   * Sort LIst of All Records by User
+   *
+   * @param records   List of Record with payments
+   * @return new sorted LIst of Records
+   */
+  public static List<Record> sortByUser(List<Record> records) {
+    List<Record> result;
+    result = records.stream()
         .sorted(Comparator.comparing(Record::getUser))
         .collect(Collectors.toList());
     return result;
@@ -208,6 +236,20 @@ public class Operations {
   }
 
   /**
+   * Sort LIst of All Records by Category
+   *
+   * @param records   List of Record with payments
+   * @return new sorted LIst of Records
+   */
+  public static List<Record> sortByCategory(List<Record> records) {
+    List<Record> result;
+    result = records.stream()
+        .sorted(Comparator.comparing(Record::getCategory))
+        .collect(Collectors.toList());
+    return result;
+  }
+
+  /**
    * Sort part of LIst of Records by Amount in period
    *
    * @param records   List of Record with payments
@@ -220,6 +262,20 @@ public class Operations {
     result = records.stream()
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
+        .sorted(Comparator.comparing(Record::getAmount))
+        .collect(Collectors.toList());
+    return result;
+  }
+
+  /**
+   * Sort LIst of All Records by Amount
+   *
+   * @param records   List of Record with payments
+   * @return new sorted LIst of Records
+   */
+  public static List<Record> sortByAmount(List<Record> records) {
+    List<Record> result;
+    result = records.stream()
         .sorted(Comparator.comparing(Record::getAmount))
         .collect(Collectors.toList());
     return result;

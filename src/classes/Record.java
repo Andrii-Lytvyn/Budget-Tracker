@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.Date;
+import java.util.List;
 
 public class Record {
   private int id;
@@ -60,4 +61,21 @@ public class Record {
 
   public Record() {
   }
+
+  /**
+   * Calculate new ID in List of records
+   *
+   * @param records List of records
+   * @return new ID
+   */
+  public static int getNewRecordId(List<Record> records) {
+    int max = 1;
+    for (Record record : records) {
+      if (record.getId() >= max) {
+        max = record.getId() + 1;
+      }
+    }
+    return max;
+  }
+
 }

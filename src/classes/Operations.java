@@ -109,5 +109,22 @@ public class Operations {
     return result;
   }
 
+  /**
+   * Sort part of LIst of Records by Amount in period
+   *
+   * @param records   List of Record with payments
+   * @param dateBegin Begin of payments period
+   * @param dateEnd   End of payments period
+   * @return new sorted LIst of Records
+   */
+  public static List<Record> sortByAmount(List<Record> records, Date dateBegin, Date dateEnd) {
+    List<Record> result;
+    result = records.stream()
+        .filter(x -> x.getDate().after(dateBegin))
+        .filter(x -> x.getDate().before(dateEnd))
+        .sorted(Comparator.comparing(Record::getAmount))
+        .collect(Collectors.toList());
+    return result;
+  }
 
 }

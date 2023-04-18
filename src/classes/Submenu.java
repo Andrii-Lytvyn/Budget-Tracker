@@ -13,14 +13,18 @@ import java.util.Date;
 import java.util.List;
 
 public class Submenu {
-    public static final String LINEOPEN = " ╔======╦==============╦===============╦============╦==============╦========================╗";
-    public static final String HEADER = "   ║  ID  ║     Date     ║    Category   ║    User    ║    Amount    ║        Comments        ║";
-    public static final String LINECLOSE = "╚======╩==============╩===============╩============╩==============╩========================╝";
+    public static final String LINEOPEN = "╔======╦==============╦===============╦============╦==============╦========================╗";
+
+    public static final String HEADER = "║  ID  ║     Date     ║    Category   ║    User    ║    Amount    ║        Comments        ║";
+    public static final String LINEMIDLE = "║======╬==============╬===============╬============╬==============╬========================║";
+    public static final String LINEOPEN2 = "╟----4------10----------------15------------10-----------10-------------------35--------------------╢";
 
     public static void printHeader() {
         System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEOPEN + Colors.RESET);
         System.out.println(Colors.WHITE_BOLD_BRIGHT + HEADER + Colors.RESET);
-        System.out.println(Colors.WHITE_BOLD_BRIGHT + LINECLOSE + Colors.RESET);
+        System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEMIDLE + Colors.RESET);
+        System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEOPEN2 + Colors.RESET);
+        System.out.printf("");
     }
 
 
@@ -42,6 +46,22 @@ public class Submenu {
         r.keyPress(KeyEvent.VK_Q);
         r.keyRelease(KeyEvent.VK_CONTROL);
         r.keyRelease(KeyEvent.VK_Q);
+    }
+    public static void showAll(List<Record> records) throws IOException, ParseException {
+
+        for (Record record : records) { //cut long Titles
+            int id = record.getId();
+            String category = record.getCategory();
+            String user = record.getUser();
+            double amount = record.getAmount();
+            String comment = record.getComment();
+            String data = Operations.dateToString(record.getDate());
+
+            String recordRow = String.format("|%4d|%10s|%10s|%35s|%11s|%11s|%12s|%13s|%9s|",
+                   id, category, user, amount, comment,
+                    data);
+            System.out.println(recordRow);
+        }
     }
 
 

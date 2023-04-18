@@ -8,9 +8,10 @@ import java.util.List;
 
 public class I_O_Crypto {
 
-  final static int CRYPTO = 213;
+  final static int CRYPTO = 1;
   final public static String SEP = ",";
   final static List<String> list = new ArrayList<>();
+
   /**
    * Overwrites the sheet character-by-character by shifting the ASCII code by the number when CRYPTO > 0 to the right
    * When CRYPTO < 0 to the left
@@ -18,7 +19,7 @@ public class I_O_Crypto {
    *
    * @param records hand over the sheet for encryption
    */
-  private static void makeCrypto(List<Record> records) {
+  public static void makeCrypto(List<Record> records) {
     StringBuilder tempString = new StringBuilder();
     int j = 0;
     for (Record items : records) {
@@ -27,11 +28,13 @@ public class I_O_Crypto {
         int code = (int) line.charAt(i) + CRYPTO;
         tempString.append((char) code);
       }
-      list.set(j, tempString.toString());
+      list.add(j, tempString.toString());
       tempString = new StringBuilder();
       j++;
     }
+    list.forEach(System.out::println);
   }
+
   /**
    * Метод записывает всю информацию из файла в лист. Дешифрует его. Лист изначально очищается.
    *
@@ -50,6 +53,7 @@ public class I_O_Crypto {
       list.add(tempString.toString());
     }
   }
+
   /**
    * Метод по расшифровке файла. Проверяет не пустой ли файл. Если нет расшифровывает и отображает записи.
    *
@@ -61,7 +65,6 @@ public class I_O_Crypto {
     if (cryptoFile.length() == 0) {
       System.out.println("Файл пуст");
     } else {
-      System.out.println("Расшифрованные записи: \n");
       for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
         StringBuilder tempString = new StringBuilder();
         for (int i = 0; i < row.length(); i++) {
@@ -69,14 +72,22 @@ public class I_O_Crypto {
           tempString.append((char) code);
         }
         //System.out.println(tempString);
-        parseRecordFromString(tempString.toString(),records);
+        parseRecordFromString(tempString.toString(), records);
       }
       //   list.forEach(System.out::println); - это просто крутая запись.
 
       inputFileReader.close();
     }
   }
-  public static void parseRecordFromString(String line, List<Record> records) throws IOException, ParseException {
+
+  /**
+   * Parse and add record from String
+   *
+   * @param line    String from file
+   * @param records records for adding
+   * @throws ParseException can
+   */
+  public static void parseRecordFromString(String line, List<Record> records) throws ParseException {
     for (int i = 0; i < line.length(); ++i) {
       String[] temp = line.split(SEP);
       Record record = new Record();
@@ -90,7 +101,6 @@ public class I_O_Crypto {
       System.out.println(recordToString(record));
       return;
     }
-
   }
 
   /**
@@ -151,7 +161,9 @@ public class I_O_Crypto {
     //list.clear();
     BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
     for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
-      parseRecordFromString(row,records);
+      parseRecordFromString(row, records);
     }
   }
+
+
 }

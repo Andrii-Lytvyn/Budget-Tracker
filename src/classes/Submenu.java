@@ -214,17 +214,18 @@ public class Submenu {
     }
     System.out.print(Colors.BLUE + "Input title:     ");
     String title = br.readLine();
+    System.out.println("Current date: " + Operations.dateToString(currentDate));
     System.out.print(Colors.BLUE + "Input date or 'Enter' for current date (dd.MM.yyyy):  ");
     String startDate = br.readLine();
     if (!startDate.isEmpty()) {
       stDate = formatter.parse(startDate);
     }
-    for (int i = 1; i <= categories.size(); ++i) {
-      System.out.println("" + i + categories.get(i));
+    for (int i = 0; i < categories.size(); ++i) {
+      System.out.println("" + i + " " + categories.get(i).getTitle());
     }
     System.out.print("Choose category from list (1-10):      ");
-    int cat = Integer.parseInt(br.readLine());
-    String categoryName = categories.get(cat).getTitle();//get category by number and get title
+//    int cat = Integer.parseInt(br.readLine());
+//    String categoryName = categories.get(cat).getTitle();//get category by number and get title
     System.out.print("Input amount:      ");
     double amount = Double.parseDouble(br.readLine());
     System.out.println();
@@ -239,12 +240,13 @@ public class Submenu {
         record.setId(id);
         record.setUser(Users.getUserName());
         record.setDate(stDate);
-        record.setCategory(categoryName);
+        //record.setCategory(categoryName);
         if (!income) {
           multiply = -1;
         }
         record.setAmount(amount * multiply);
         records.add(record);
+        I_O_Crypto.makeOutputFile(records);
         return;
       }
     }

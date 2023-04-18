@@ -142,9 +142,9 @@ public class I_O_Crypto {
    * @throws IOException can throw
    */
 
-  public void makeOutputFile(List<Record> records) throws IOException {
+  public static void makeOutputFile(List<Record> records) throws IOException {
     try {
-      FileWriter fileWriter = new FileWriter("src/rsc/budget.txt");
+      FileWriter fileWriter = new FileWriter("src/res/budget.txt");
       for (Record r : records) {
         fileWriter.write(recordToString(r));
       }

@@ -30,4 +30,13 @@ public class Category {
 
   public Category() {
   }
+
+  public Category(int id, String title, boolean allowed) {
+    this.id = id;
+    this.title = title;
+    this.allowed = allowed;
+  }
+
+//  Category c1 = new Category()
+
 }

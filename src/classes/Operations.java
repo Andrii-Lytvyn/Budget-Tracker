@@ -3,8 +3,11 @@ package classes;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -222,4 +225,25 @@ public class Operations {
     return result;
   }
 
+  /**
+   * Make List of dates one by one between two dates
+   *
+   * @param dateBegin Begin of payments period inclusive
+   * @param dateEnd   End of payments period exclusive
+   * @return List of dates
+   */
+  public static List<Date> datesBetween(Date dateBegin, Date dateEnd){
+    List<Date> dates = new ArrayList<>();
+    Calendar calendar = new GregorianCalendar();
+    // setup calendar for dateBegin
+    calendar.setTime(dateBegin);
+    // fill List of dates one by one
+    while (calendar.getTime().before(dateEnd)) // dateEnd exclusive!
+    {
+      Date result = calendar.getTime(); // get date from current day
+      dates.add(result); // add to list of dates current date
+      calendar.add(Calendar.DATE, 1); // move day in calendar one dey front
+    }
+    return dates;
+  }
 }

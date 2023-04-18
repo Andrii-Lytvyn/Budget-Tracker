@@ -1,96 +1,58 @@
 # Budget-Tracker
 
-@AA USER
-@AA LOGIN
-@AA PASS
-CATEGORY
+## Family accounting program
+**(c) Team #1**
 
-ID | NAME | USER | FLAG
+    **************    ***********        ******        *****        *****                       *********
+    **************    ***********       ********       *******    *******                      **********
+         ****         ****             ***    ***      *******    *******                     ***********
+         ****         ****            ****    ****     **** ***  *** ****                    ************
+         ****         ****           ****      ****    ****  **  **  ****                   *************
+         ****         ****           ****      ****    ****  ******  ****                  *****  *******
+         ****         ****           ****      ****    ****   ****   ****                 *****   *******
+         ****         ********       **************    ****    **    ****                *****    *******
+         ****         ********       **************    ****          ****                         *******
+         ****         ****           ****      ****    ****          ****                         *******
+         ****         ****           ****      ****    ****          ****                         *******
+         ****         ****           ****      ****    ****          ****                         *******
+         ****         ****           ****      ****    ****          ****                    *****************
+         ****         ***********    ****      ****    ****          ****                  *********************
+         ****         ***********    ****      ****    ****          ****                *************************
 
-1 | FOOD | 1    -> ONLY FOR PARENTS
-2 | TOYS | 0    -> FOR EVERYONE
+_____________________
 
-Category for CHILD:
- - toys (GOODS + Comments from CHILD)
- - snacks (FOOD + Comments from CHILD))
- - fun (PARTY + Comments from CHILD)
-
-ID | DATA | USER | CATEGORY | AMOUNT | COMMENTS 
-________________________________________________
-TYPE OF :
-ID - int
-DATA - DATA
-CATEGORY - LIST<STRING>
-USERS - STRING
-AMOUNT -DOUBLE (2)
-COMMENT - STRING
-
+## DEVELOPERS
+_____________________
 
 
-BALANCE IN FILE, CRYPTO
+[Andrii Lytvyn](https://github.com/Andrii-Lytvyn) 
 
-Outcome
-12 | 17.04.23 | CHILD | GOODS | -67 | Toys + Buzz lighter
-Outcome
-13 | 17.04.23 | PAPA | PARTY | 250 | Vodka + Beer
+[Alexander Stopkin](https://github.com/StopkinOlexandr)
 
+[Andrii Golik](https://github.com/GolikAndrii)
 
 
+## DESCRIPTION PROJECT
+_____________________
 
+>A family finance management program is a tool that helps families manage their money and plan their finances. Users can create budgets, track their expenses and income, set financial goals, and monitor their progress with such a program. Additionally, the program may provide alerts about bills and payments, automatically categorize expenses, analyze spending, and provide reports on the family's financial status.
 
+## MAIN STRUCTURE
+_____________________
 
-    - Outcome + Comments
-        - Food
-        - Closes
-        - Party
-        - Goods
-        - Auto
-        - add new....
-    - Income
-        - Salary + Comments
-        - Gifts + Comments
-        - Other + Comments
-DATA
-    - Income for Child 
+ Folder          | Name          | Description
+-----------------|---------------|-----------
+src/classes      | Category.java | Class Category сontains a list of all categories
+src/classes      | Crypto.java   | Data encryption                     
+src/classes      | Menu.java     | Main-menu and Submenu for Project
+src/classes      | Colors.java   | Class with several colors 
+src/classes      | Output.java   | 1111                 
+src/classes      | Users.java    | List of Users and all methods for user                          
+src/res          | budget.txt    | Main file with list of all date for Category.java   
+src/res          | login.txt     | List of Users
+src/res          | pass.txt      | List of Passwords
+src/res/sounds   | sound.wav     | Sound for main screen of Presentation
 
+## USAGE
 
-+ IF USER = PARENT => 100$ CATEGORY | DATA | COMMENTS
-+ ELSE USER = CHILD => FALSE
-- USER | 60$ CATEGORY | DATA | COMMENTS |
-
-_______________________
-+ Balance: + 63$
-
-USER = 1 => SHOW ALL CATEGORY
-USER = 0 => SHOW ONLY SELF CATEGORY
-
-REPORTS USER = 1 => SHOW ALL
-REPORTS USER = 0 => SHOW SELF Expenses CATEGORY
-
-
-USER CAN:
-    - Add IN/OUT
-        - CHOOSE CATEGORY (BY ID)
-        - ENTER DATA
-        - ENTER SUM
-        - ADD COMMENT
-        
-    - EDIT IN/OUT
-        - CHOOSE ID
-        - EDIT CATEGORY
-        - EDIT DATA
-        - EDIT SUN
-        - EDIT COMMENT
-
-    - DELETE IN/OUT
-        - CHOOSE ID
-
-Output
-ANALYTIC:
-    - SORT (ID, CATEGORY, DATA, USER, SUM)
-    - BALANCE
-    - CHARTS (by SUM, USER, CATEGORY)
-    - 
-
-
-
+To use the program, simply run the `main` method on the file `BudgetTracker` in main folder

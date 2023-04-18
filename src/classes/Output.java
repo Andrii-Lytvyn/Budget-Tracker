@@ -1,9 +1,5 @@
 package classes;
-
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Output {
@@ -28,13 +24,20 @@ public class Output {
 
   public static void chartCategory(List<Record> records, List<Category> categories,
       Date dateBegin, Date dateEnd) {
-
+    System.out.println("--------------------------------------------------------------------------------------------------------------");
+    System.out.println("|    Category   |                                          Amount                                            |");
+    System.out.println("--------------------------------------------------------------------------------------------------------------");
+    double totalEx = Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (Category category : categories) {
       double categorySum = Operations.expensesByCategory(records, category.getTitle(),
           dateBegin, dateEnd);
-      System.out.println(category.getTitle() + " " + categorySum);
-      // TODO Chart print in percents: Category and categorySum
-      //  (height or width proportional to percentage. quantity as Categories)
+      double percent = categorySum * 100 / totalEx;
+      System.out.printf("| %15s |", category);
+      for (int i = 0; i < percent; ++i) {
+        System.out.print("#");
+      }
+      percent = Math.round(percent);
+      System.out.println(" " + percent + "%");
     }
   }
 
@@ -48,14 +51,20 @@ public class Output {
    */
   public static void chartUser(List<Record> records, List<Users> users,
       Date dateBegin, Date dateEnd) {
-
+    System.out.println("--------------------------------------------------------------------------------------------------------------");
+    System.out.println("|     User      |                                           Amount                                           |");
+    System.out.println("--------------------------------------------------------------------------------------------------------------");
+    double totalEx = Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (Users user : users) {
       double userSum = Operations.expensesByUser(records, user.getName(),
           dateBegin, dateEnd);
-      System.out.println(user.getName() + " " + userSum);
-      // TODO Chart print in percents: User and userSum
-      //  (height or width proportional to percentage. quantity as Users)
-
+      double percent = userSum * 100 / totalEx;
+      System.out.print("| " + user + " |");
+      for (int i = 0; i < percent; ++i) {
+        System.out.print("#");
+      }
+      percent = Math.round(percent);
+      System.out.println(" " + percent + "%");
     }
   }
 
@@ -68,16 +77,23 @@ public class Output {
    * @param dateEnd   End of payments period
    */
   public static void chartDate(List<Record> records, Date dateBegin, Date dateEnd) {
-    List<Date> dates = new ArrayList<>();
+    List<Date> dates;
     dates = Operations.datesBetween(dateBegin, dateEnd);
     // get total expenses for period
     double totalEx = Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     // calculate and output sum by date
+    System.out.println("--------------------------------------------------------------------------------------------------------------");
+    System.out.println("|     Dates     |                                            Amount                                          |");
+    System.out.println("--------------------------------------------------------------------------------------------------------------");
     for (Date date : dates) {
       double dateSum = Operations.expensesByDate(records, date);
       double percent = dateSum * 100 / totalEx;
-      System.out.println(Operations.dateToString(date) + " " + percent);
-      // TODO visual CHART
+      System.out.print("| " + Operations.dateToString(date) + " |");
+      for (int i = 0; i < percent; ++i) {
+        System.out.print("#");
+      }
+      percent = Math.round(percent);
+      System.out.println(" " + percent + "%");
     }
 
   }

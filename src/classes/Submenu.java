@@ -22,17 +22,18 @@ public class Submenu {
     }
 
 
-
-    public static void delayFirst(){
+    public static void delayFirst() {
         int delay = 250;
         long start = System.currentTimeMillis();
-        while (start >= System.currentTimeMillis() - delay);
+        while (start >= System.currentTimeMillis() - delay) ;
     }
-    public static void delaySecond(){
+
+    public static void delaySecond() {
         int delay = 500;
         long start = System.currentTimeMillis();
-        while (start >= System.currentTimeMillis() - delay);
+        while (start >= System.currentTimeMillis() - delay) ;
     }
+
     public static void clearAll() throws AWTException {
         Robot r = new Robot();
         r.keyPress(KeyEvent.VK_CONTROL);
@@ -40,8 +41,9 @@ public class Submenu {
         r.keyRelease(KeyEvent.VK_CONTROL);
         r.keyRelease(KeyEvent.VK_Q);
     }
+}
 
-
+/*
     public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
@@ -163,6 +165,6 @@ public class Submenu {
     }
 
 }
-
+*/
 
 

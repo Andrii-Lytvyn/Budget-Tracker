@@ -1,5 +1,6 @@
 package classes;
 
+import java.awt.*;
 import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -37,13 +38,13 @@ public class I_O_Crypto {
    * @param cryptoFile - файл с шифрованными данными
    * @throws IOException выбрасывает
    */
-  private static void addInfoFromFileToList(File cryptoFile) throws IOException {
+  public static void addInfoFromFileToList(File cryptoFile) throws IOException {
     list.clear();
     BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
     for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
       StringBuilder tempString = new StringBuilder();
       for (int i = 0; i < row.length(); i++) {
-        int code = (int) row.charAt(i) - CRYPTO;
+        int code = (int) row.charAt(i)/* - CRYPTO*/;
         tempString.append((char) code);
       }
       list.add(tempString.toString());
@@ -55,7 +56,7 @@ public class I_O_Crypto {
    * @param cryptoFile - Файл для расшифровки
    * @throws IOException выбрасывает
    */
-  public static void makeUnCrypt(File cryptoFile) throws IOException, ParseException {
+  public static void makeUnCrypt(File cryptoFile, List<Record> records) throws IOException, ParseException {
     BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
     if (cryptoFile.length() == 0) {
       System.out.println("Файл пуст");
@@ -68,14 +69,14 @@ public class I_O_Crypto {
           tempString.append((char) code);
         }
         //System.out.println(tempString);
-        parseRecordFromString(tempString.toString());
+        parseRecordFromString(tempString.toString(),records);
       }
       //   list.forEach(System.out::println); - это просто крутая запись.
 
       inputFileReader.close();
     }
   }
-  public static void parseRecordFromString(String line) throws IOException, ParseException {
+  public static void parseRecordFromString(String line, List<Record> records) throws IOException, ParseException {
     for (int i = 0; i < line.length(); ++i) {
       String[] temp = line.split(SEP);
       Record record = new Record();
@@ -85,8 +86,10 @@ public class I_O_Crypto {
       record.setAmount(Double.parseDouble(temp[3]));
       record.setCategory(temp[4]);
       record.setComment(temp[5]);
-      //tasks.add(task);
+      records.add(record);
+      return;
     }
+
   }
 
   /**
@@ -143,5 +146,11 @@ public class I_O_Crypto {
     }
   }
 
-
+  public static void parseFileUncrypted(File cryptoFile, List<Record> records) throws IOException, ParseException {
+    //list.clear();
+    BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
+    for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
+      parseRecordFromString(row,records);
+    }
+  }
 }

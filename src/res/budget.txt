@@ -1,0 +1,2 @@
+1,18.04.2023,Mother,200,Food,coca-cola
+2,17.04.2023,Father,100,party,hot-dog

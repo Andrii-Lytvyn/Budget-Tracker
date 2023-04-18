@@ -89,13 +89,14 @@ public class I_O_Crypto {
    */
   public static void parseRecordFromString(String line, List<Record> records) throws ParseException {
     for (int i = 0; i < line.length(); ++i) {
+
       String[] temp = line.split(SEP);
       Record record = new Record();
       record.setId(Integer.parseInt(temp[0]));
-      record.setDate(Operations.StringToDate(temp[1]));
-      record.setUser(temp[2]);
-      record.setAmount(Double.parseDouble(temp[3]));
-      record.setCategory(temp[4]);
+      record.setUser(temp[1]);
+      record.setDate(Operations.StringToDate(temp[2]));
+      record.setCategory(temp[3]);
+      record.setAmount(Double.parseDouble(temp[4]));
       record.setComment(temp[5]);
       records.add(record);
       System.out.println(recordToString(record));
@@ -131,8 +132,12 @@ public class I_O_Crypto {
    * @return
    */
   public static String recordToString(Record record) {
-    return record.getId() + "," + record.getDate() + "," + record.getUser() + "," + record.getAmount() +
-            "," + record.getCategory() + "," + record.getComment() + "\n";
+    return +record.getId() + ","
+            + record.getUser() + ","
+            + Operations.dateToString(record.getDate()) + ","
+            + record.getCategory() + ","
+            + record.getAmount() + ","
+            + record.getComment() + "\n";
   }
 
   /**

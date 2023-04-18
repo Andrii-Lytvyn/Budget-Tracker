@@ -204,8 +204,8 @@ public class Submenu {
       System.out.println("" + i + " " + categories.get(i).getTitle());
     }
     System.out.print("Choose category from list (1-10):      ");
-//    int cat = Integer.parseInt(br.readLine());
-//    String categoryName = categories.get(cat).getTitle();//get category by number and get title
+   int cat = Integer.parseInt(br.readLine());
+   String categoryName = categories.get(cat).getTitle();//get category by number and get title
     System.out.print("Input amount:      ");
     double amount = Double.parseDouble(br.readLine());
     System.out.println();
@@ -225,6 +225,8 @@ public class Submenu {
           multiply = -1;
         }
         record.setAmount(amount * multiply);
+        record.setComment(title);
+        record.setCategory(categoryName);
         records.add(record);
         I_O_Crypto.makeOutputFile(records);
         return;

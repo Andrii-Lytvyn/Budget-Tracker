@@ -49,6 +49,6 @@ public class BudgetTracker {
    // Users.getLoginFromFile(loginFile);
 
     Submenu.addRecord(records,categories);
-    Submenu.addRecord(records, categories);
+
   }
 }

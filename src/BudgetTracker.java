@@ -18,9 +18,16 @@ public class BudgetTracker {
     File loginFile = new File("src/res/login.txt");
     I_O_Crypto.parseFileUncrypted(budgetFile, records);
     Record record = new Record();
-    I_O_Crypto.makeCrypto(records);
-    Users.showLogin(loginFile);
-    System.out.println(Users.getUserName());
+    //I_O_Crypto.makeCrypto(records);
 
+    //Users.makeCrypto(Users.getLoginFromFile(loginFile));
+
+     Users.showLogin(loginFile);
+    System.out.println(Users.getUserName());
+//    Submenu.addRecord(records, categories);
+
+   // Users.getLoginFromFile(loginFile);
+
+    Submenu.addRecord(records,categories);
   }
 }

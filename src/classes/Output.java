@@ -68,18 +68,8 @@ public class Output {
    * @param dateEnd   End of payments period
    */
   public static void chartDate(List<Record> records, Date dateBegin, Date dateEnd) {
-    // make List of dates between dateBegin and dateEnd
     List<Date> dates = new ArrayList<>();
-    Calendar calendar = new GregorianCalendar();
-    // setup calendar for dateBegin
-    calendar.setTime(dateBegin);
-    // fill List of dates one by one
-    while (calendar.getTime().before(dateEnd)) // dateEnd exclusive!
-    {
-      Date result = calendar.getTime(); // get date from current day
-      dates.add(result); // add to list of dates current date
-      calendar.add(Calendar.DATE, 1); // move day in calendar one dey front
-    }
+    dates = Operations.datesBetween(dateBegin, dateEnd);
     // get total expenses for period
     double totalEx = Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     // calculate and output sum by date

@@ -24,7 +24,7 @@ public class Operations {
   }
 
   /**
-   * Calculate payment balance in period by User
+   * Calculate expenses in period by User
    *
    * @param records   List of Record with payments
    * @param user      Username to find their expenses
@@ -37,6 +37,24 @@ public class Operations {
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
         .filter(x -> x.getUser() == user)
+        .mapToDouble(Record::getAmount)
+        .sum();
+  }
+
+  /**
+   * Calculate expenses in period by Category
+   *
+   * @param records   List of Record with payments
+   * @param category  Category to find expenses by it
+   * @param dateBegin Begin of payments period
+   * @param dateEnd   End of payments period
+   * @return Sum of expenses by User in this period
+   */
+  public static double expensesByCategory(List<Record> records, String category, Date dateBegin, Date dateEnd) {
+    return records.stream()
+        .filter(x -> x.getDate().after(dateBegin))
+        .filter(x -> x.getDate().before(dateEnd))
+        .filter(x -> x.getCategory() == category)
         .mapToDouble(Record::getAmount)
         .sum();
   }

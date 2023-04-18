@@ -199,8 +199,8 @@ public class Submenu {
     if (!startDate.isEmpty()) {
       stDate = formatter.parse(startDate);
     }
-    for (int i = 1; i <= categories.size(); ++i) {
-      System.out.println("" + i + categories.get(i));
+    for (int i = 0; i < categories.size(); ++i) {
+      System.out.println("" + i + " " + categories.get(i).getTitle());
     }
     System.out.print("Choose category from list (1-10):      ");
     int cat = Integer.parseInt(br.readLine());

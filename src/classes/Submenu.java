@@ -7,7 +7,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.*;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class Submenu {
@@ -41,7 +43,7 @@ public class Submenu {
         r.keyRelease(KeyEvent.VK_CONTROL);
         r.keyRelease(KeyEvent.VK_Q);
     }
-}
+
 
 /*
     public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException {
@@ -159,8 +161,75 @@ public class Submenu {
             }
         }
     }
-
-}
 */
+  /**
+   * Add new record to List of records
+   *
+   * @param records List of Record with payments (can be sorted and filtered before)
+   * @param categories List of Categories
+   * @throws IOException IO error
+   * @throws ParseException if illegal Date format
+   */
+  public static void addRecord(List<Record> records, List<Category> categories)
+      throws IOException, ParseException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+    Record record = new Record();
+
+    Calendar today = Calendar.getInstance();
+    Date currentDate = today.getTime();
+    Date stDate = currentDate;
+
+    boolean income = false;
+    int multiply = 1;
+    int id = Record.getNewRecordId(records);
+
+    System.out.println(Colors.BLUE + "Task ID:         " + id);
+    // TODO - make method getUserName()
+    System.out.printf(Colors.BLUE + "User:          %s%n", Users.getUserName());
+    System.out.print(Colors.BLUE + "Is this income or expenses (i/e):     ");
+    String incomeOrExpenses = br.readLine();
+    if (incomeOrExpenses.equalsIgnoreCase("i")) {
+      income = true;
+    }
+    System.out.print(Colors.BLUE + "Input title:     ");
+    String title = br.readLine();
+    System.out.print(Colors.BLUE + "Input date or 'Enter' for current date (dd.MM.yyyy):  ");
+    String startDate = br.readLine();
+    if (!startDate.isEmpty()) {
+      stDate = formatter.parse(startDate);
+    }
+    for (int i = 1; i <= categories.size(); ++i) {
+      System.out.println("" + i + categories.get(i));
+    }
+    System.out.print("Choose category from list (1-10):      ");
+    int cat = Integer.parseInt(br.readLine());
+    String categoryName = categories.get(cat).getTitle();//get category by number and get title
+    System.out.print("Input amount:      ");
+    double amount = Double.parseDouble(br.readLine());
+    System.out.println();
+    System.out.print(Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SAVE " +
+        Colors.RESET + " " + Colors.WHITE_BACKGROUND_BRIGHT +
+        Colors.BLACK_BOLD + " e-EXIT: " + Colors.RESET);
+    while (true) {
+      String command = br.readLine();
+      if (command.equalsIgnoreCase("e")) {
+        return;
+      } else if (command.equalsIgnoreCase("s")) {
+        record.setId(id);
+        record.setUser(Users.getUserName());
+        record.setDate(stDate);
+        record.setCategory(categoryName);
+        if (!income) {
+          multiply = -1;
+        }
+        record.setAmount(amount * multiply);
+        records.add(record);
+        return;
+      }
+    }
+  }
+}
+
 
 

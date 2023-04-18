@@ -194,6 +194,7 @@ public class Submenu {
     }
     System.out.print(Colors.BLUE + "Input title:     ");
     String title = br.readLine();
+    System.out.println("Current date: " + Operations.dateToString(currentDate));
     System.out.print(Colors.BLUE + "Input date or 'Enter' for current date (dd.MM.yyyy):  ");
     String startDate = br.readLine();
     if (!startDate.isEmpty()) {

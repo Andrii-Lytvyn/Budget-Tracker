@@ -3,7 +3,6 @@ package classes;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -17,10 +16,9 @@ public class Operations {
    * @param date date to be converted
    * @return String of date according to pattern
    */
-  public static String dateToString (Date date){
+  public static String dateToString(Date date) {
     DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    String strDate = dateFormat.format(date);
-    return strDate;
+    return dateFormat.format(date);
   }
 
   /**
@@ -28,12 +26,11 @@ public class Operations {
    *
    * @param string according to pattern
    * @return Date
-   * @throws ParseException
+   * @throws ParseException If date format not according "dd.MM.yyyy"
    */
-  public static Date StringToDate (String string) throws ParseException {
+  public static Date StringToDate(String string) throws ParseException {
     DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    Date date = dateFormat.parse(string);
-    return date;
+    return dateFormat.parse(string);
   }
 
   /**
@@ -66,7 +63,7 @@ public class Operations {
     return records.stream()
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
-        .filter(x -> x.getUser() == user)
+        .filter(x -> x.getUser().equals(user))
         .mapToDouble(Record::getAmount)
         .sum();
   }
@@ -85,7 +82,7 @@ public class Operations {
     return records.stream()
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
-        .filter(x -> x.getCategory() == category)
+        .filter(x -> x.getCategory().equals(category))
         .mapToDouble(Record::getAmount)
         .sum();
   }

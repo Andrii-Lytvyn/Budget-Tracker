@@ -54,21 +54,18 @@ public class Submenu {
                     break;
                 }
                 case "2": {
-                    Comparator<Task> comparator = new TaskByExecutorComparator();
-                    Collections.sort(tasks, comparator);
-                    refresh(tasks);
+                    clearAll();
+                    Output.printList(Operations.sortByUser(records));
                     break;
                 }
                 case "3": {
-                    Comparator<Task> comparator = new TaskByTitleComparator();
-                    Collections.sort(tasks, comparator);
-                    refresh(tasks);
+                    clearAll();
+                    Output.printList(Operations.sortByCategory(records));
                     break;
                 }
                 case "4": {
-                    Comparator<Task> comparator = new TaskByPriorityComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
+                    clearAll();
+                    Output.printList(Operations.sortByAmount(records));
                     break;
                 }
                 case "5": {

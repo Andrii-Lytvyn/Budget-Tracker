@@ -21,7 +21,6 @@ public class Output {
    * @param dateBegin  Begin of payments period
    * @param dateEnd    End of payments period
    */
-
   public static void chartCategory(List<Record> records, List<Category> categories,
       Date dateBegin, Date dateEnd) {
     System.out.println("--------------------------------------------------------------------------------------------------------------");

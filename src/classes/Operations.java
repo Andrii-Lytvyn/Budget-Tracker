@@ -24,6 +24,24 @@ public class Operations {
   }
 
   /**
+   * Calculate payment balance in period by User
+   *
+   * @param records   List of Record with payments
+   * @param user      Username to find their expenses
+   * @param dateBegin Begin of payments period
+   * @param dateEnd   End of payments period
+   * @return Sum of expenses by User in this period
+   */
+  public static double expensesByUser(List<Record> records, String user, Date dateBegin, Date dateEnd) {
+    return records.stream()
+        .filter(x -> x.getDate().after(dateBegin))
+        .filter(x -> x.getDate().before(dateEnd))
+        .filter(x -> x.getUser() == user)
+        .mapToDouble(Record::getAmount)
+        .sum();
+  }
+
+  /**
    * Sort part of LIst of Records by ID in period
    *
    * @param records   List of Record with payments

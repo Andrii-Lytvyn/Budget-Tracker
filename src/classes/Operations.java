@@ -1,6 +1,7 @@
 package classes;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -22,9 +23,17 @@ public class Operations {
     return strDate;
   }
 
-  public static Date StringToDate (String string){
-
-    return ;
+  /**
+   * Convert String to Date with pattern "dd.MM.yyyy"
+   *
+   * @param string according to pattern
+   * @return Date
+   * @throws ParseException
+   */
+  public static Date StringToDate (String string) throws ParseException {
+    DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    Date date = dateFormat.parse(string);
+    return date;
   }
 
   /**

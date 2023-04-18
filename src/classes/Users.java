@@ -1,13 +1,26 @@
 package classes;
 
 public class Users {
+
   private String name;
   private boolean child;
 
-  public Users() {};
+  public void setName(String name) {
+    this.name = name;
+  }
 
-  // TODO make real class with users and make List<Users>
+  public void setChild(boolean child) {
+    this.child = child;
+  }
+
+  public boolean isChild() {
+    return child;
+  }
+
   public String getName() {
     return this.name;
+  }
+
+  public Users() {
   }
 }

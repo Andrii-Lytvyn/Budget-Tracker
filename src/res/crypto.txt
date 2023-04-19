@@ -1,7 +1,12 @@
-=8=<:<@:><>?8Y{tq~89><<:<8R{{p8o{om9o{xm
->8=>:<@:><>?8Rmtq~89=<:<8\m~8t{9p{s
-?8=?:<@:><>?8|m|m89=>C:<8T{q8om~|q
-A8=@:<@:><>?8|m|m89A<:<8Ox{tq8n~{p
-C8=A:<@:><>?8ymym89=A:A=8R{{p8rut
-D8=E:<@:><>?8ymym8=A<<:<88mxm~,r{~,Ym~ot
-E8=E:<@:><>?8ymym8==?:<88zq
+1,10.04.2023,Mother,-200.0,Food,coca-cola
+2,12.04.2023,Father,-10.0,Party,hot-dog
+3,13.04.2023,papa,-127.0,House,carpet
+5,14.04.2023,papa,-50.0,Clothes,brod
+7,15.04.2023,mama,-15.51,Food,fish
+8,19.04.2023,mama,1500.0,,salary for March
+9,19.04.2023,mama,113.0,,new
+10,19.04.2023,mama,113.2,,salary
+11,19.04.2023,mama,-17.0,Goods,junk food
+12,19.04.2023,papa,-263.0,Transport,Tires
+13,19.04.2023,papa,-333.0,Transport,Paint
+14,19.04.2023,mama,-111.0,Medicine,testdebug

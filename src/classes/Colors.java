@@ -6,6 +6,7 @@ public class Colors {
 
     // Regular Colors
     public static final String BLACK = "\033[0;30m";   // BLACK
+    public static final String GRAY = "\033[0;37m";   // GRAY
     public static final String RED = "\033[0;31m";     // RED
     public static final String GREEN = "\033[0;32m";   // GREEN
     public static final String YELLOW = "\033[0;33m";  // YELLOW

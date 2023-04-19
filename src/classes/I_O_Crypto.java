@@ -97,7 +97,6 @@ public class I_O_Crypto {
       record.setCategory(temp[4]);
       record.setComment(temp[5]);
       records.add(record);
-      System.out.println(recordToString(record));
       return;
     }
   }

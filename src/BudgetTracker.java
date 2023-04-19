@@ -1,6 +1,7 @@
 import classes.*;
 import classes.Record;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,7 +14,7 @@ public class BudgetTracker {
   public static List<Category> categories = new ArrayList<>();
   public static List<Users> users = new ArrayList<>();
 
-  public static void main(String[] args) throws IOException, ParseException {
+  public static void main(String[] args) throws IOException, ParseException, AWTException {
     File budgetFile = new File("src/res/budget.txt");
     File loginFile = new File("src/res/login.txt");
     I_O_Crypto.parseFileUncrypted(budgetFile, records);
@@ -23,7 +24,11 @@ public class BudgetTracker {
     //Users.makeCrypto(Users.getLoginFromFile(loginFile));
 
      Users.showLogin(loginFile);
-    System.out.println(Users.getUserName());
+     Submenu.printHeader();
+     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+     Submenu.recordsMenu(records);
+
+
     Category c0 = new Category(0, "Food", false);
     categories.add(c0);
     Category c1 = new Category(1, "Goods", true);
@@ -56,4 +61,5 @@ public class BudgetTracker {
 //    Output.chartUser(records, users, Operations.stringToDate("01.01.2000"), Operations.stringToDate("20.04.2023"));
     Output.chartDate(records, Operations.stringToDate("01.04.2023"), Operations.stringToDate("20.04.2023"));
   }
+
 }

@@ -49,13 +49,16 @@ public class Users {
       users.put(temp[0], temp[1]);
       userNames.add(temp[0]);
     }
-    System.out.print("Enter login |mama|papa|: ");
+    System.out.println();
+    System.out.print(Colors.BLUE_BRIGHT + "Enter login:     " + Colors.RESET);
     String login = br.readLine();
-    System.out.print("Enter password |mama-1|papa-2|" );
+    System.out.print(Colors.BLUE_BRIGHT + "Enter password:  " + Colors.RESET );
     String password = br.readLine();
+    System.out.println();
     try {
       if (users.get(login).equals(password)) {
-        System.out.println("Passed");
+        System.out.println(Colors.YELLOW_BOLD_BRIGHT + "Congratulations, you're logged in! \uD83D\uDC4C" + Colors.RESET);
+        Submenu.delayMain();
         setUserName(login);
       } else {
         System.err.println("Incorrect password.");
@@ -65,7 +68,6 @@ public class Users {
       }
     } catch (NullPointerException e) {
       System.err.println("User is not detected.");
-      System.out.println();
       showLogin(usersFile);
     }
 

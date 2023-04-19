@@ -14,9 +14,9 @@ import java.util.List;
 
 public class Submenu {
 
-  public static final String LINEOPEN = " ╔======╦==============╦===============╦============╦==============╦========================╗";
-  public static final String HEADER = "   ║  ID  ║     Date     ║    Category   ║    User    ║    Amount    ║        Comments        ║";
-  public static final String LINECLOSE = "╚======╩==============╩===============╩============╩==============╩========================╝";
+  public static final String LINEOPEN = "╔======╦========================╦=========================╦======================╦========================╦==================================╗";
+  public static final String HEADER = "║  ID  ║     Data               ║    Category             ║    User              ║    Amount              ║        Comments                  ║";
+  public static final String LINECLOSE = "╚======╩========================╩=========================╩======================╩========================╩==================================╝";
 
   public static void printHeader() {
     System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEOPEN + Colors.RESET);
@@ -25,15 +25,15 @@ public class Submenu {
   }
 
 
-  public static void delayFirst() {
-    int delay = 250;
+  public static void delayMain() {
+    int delay = 2000;
     long start = System.currentTimeMillis();
     while (start >= System.currentTimeMillis() - delay)
       ;
   }
 
   public static void delaySecond() {
-    int delay = 500;
+    int delay = 100;
     long start = System.currentTimeMillis();
     while (start >= System.currentTimeMillis() - delay)
       ;
@@ -48,33 +48,71 @@ public class Submenu {
   }
 
 
-/*
+  public static final String SHOW_ALL_MENU_MAIN = ""
+          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+  public static final String SHOW_ALL_MENU_ID = ""
+          + Colors.YELLOW + "|SORT BY:         " + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+  public static final String SHOW_ALL_MENU_USER = ""
+          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+  public static final String SHOW_ALL_MENU_CATEGORY = ""
+          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+  public static final String SHOW_ALL_MENU_AMOUNT = ""
+          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+
     public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        while (true) {
-            System.out.print(Colors.WHITE_BOLD_BRIGHT + "Choose command: " + Colors.RESET);
-            String key = br.readLine();
-            switch (key) {
-                case "1": { // sort by ID
-                    clearAll();
-                    Output.printList(Operations.sortByID(records));
-                    break;
-                }
-                case "2": {
-                    clearAll();
-                    Output.printList(Operations.sortByUser(records));
-                    break;
-                }
-                case "3": {
-                    clearAll();
-                    Output.printList(Operations.sortByCategory(records));
-                    break;
-                }
-                case "4": {
-                    clearAll();
-                    Output.printList(Operations.sortByAmount(records));
-                    break;
-                }
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      while (true) {
+        System.out.println();
+        System.out.print(Colors.GRAY + "Choose command: " + Colors.RESET);
+        String key = br.readLine();
+        switch (key) {
+          case "1": { // sort by ID
+            clearAll();
+            delaySecond();
+            System.out.println(SHOW_ALL_MENU_ID);
+            Output.printList(Operations.sortByID(records));
+            break;
+          }
+          case "2": {
+            clearAll();
+            delaySecond();
+            System.out.println(SHOW_ALL_MENU_USER);
+            Output.printList(Operations.sortByUser(records));
+            break;
+          }
+          case "3": {
+            clearAll();
+            delaySecond();
+            System.out.println(SHOW_ALL_MENU_CATEGORY);
+            Output.printList(Operations.sortByCategory(records));
+            break;
+          }
+          case "4": {
+            clearAll();
+            delaySecond();
+            System.out.println(SHOW_ALL_MENU_AMOUNT);
+            Output.printList(Operations.sortByAmount(records));
+            break;
+          }
+        }
+      }
+    }
+                /*
                 case "5": {
                     Comparator<Task> comparator = new TaskByDifficultComparator();
                     tasks.sort(comparator);

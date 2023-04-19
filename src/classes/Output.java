@@ -48,17 +48,17 @@ public class Output {
    * @param dateBegin Begin of payments period
    * @param dateEnd   End of payments period
    */
-  public static void chartUser(List<Record> records, List<Users> users,
+  public static void chartUser(List<Record> records, List<String> users,
       Date dateBegin, Date dateEnd) {
     System.out.println("--------------------------------------------------------------------------------------------------------------");
     System.out.println("|     User      |                                           Amount                                           |");
     System.out.println("--------------------------------------------------------------------------------------------------------------");
     double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
-    for (Users user : users) {
-      double userSum = -1 * Operations.expensesByUser(records, user.getName(),
+    for (String user : users) {
+      double userSum = -1 * Operations.expensesByUser(records, user,
           dateBegin, dateEnd); //expenses are negative
       double percent = userSum * 100 / totalEx;
-      System.out.print("| " + user.getName() + " |");
+      System.out.print("| " + user + " |");
       for (int i = 0; i < percent; ++i) {
         System.out.print("#");
       }
@@ -87,6 +87,7 @@ public class Output {
     for (Date date : dates) {
       double dateSum = -1 * Operations.expensesByDate(records, date); //expenses are negative
       double percent = -1 * dateSum * 100 / totalEx;
+      if(percent == 0) continue;
       System.out.print("| " + Operations.dateToString(date) + " |");
       for (int i = 0; i < percent; ++i) {
         System.out.print("#");

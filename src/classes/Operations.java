@@ -305,4 +305,30 @@ public class Operations {
     }
     return dates;
   }
+
+  /**
+   * get Minimum date in records
+   *
+   * @param records  List of Record with payments
+   * @return Minimum date from List of records
+   */
+  public static Date getMinData(List<Record> records){
+    return records.stream()
+        .map(Record::getDate)
+        .min(Date::compareTo)
+        .get();
+  }
+
+  /**
+   * get Maximum date in records
+   *
+   * @param records  List of Record with payments
+   * @return Maximum date from List of records
+   */
+  public static Date getMaxData(List<Record> records){
+    return records.stream()
+        .map(Record::getDate)
+        .max(Date::compareTo)
+        .get();
+  }
 }

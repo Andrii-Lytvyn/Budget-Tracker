@@ -79,6 +79,7 @@ public class Users {
     for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
       String[] temp = row.split(I_O_Crypto.SEP);
       users.put(temp[0], temp[1]);
+
       userNames.add(temp[0]);
     }
  //  makeCrypto(userNames);

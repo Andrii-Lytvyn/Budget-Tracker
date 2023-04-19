@@ -48,6 +48,7 @@ public class Users {
       String[] temp = row.split(I_O_Crypto.SEP);
       users.put(temp[0], temp[1]);
       userNames.add(temp[0]);
+
     }
     System.out.print("Enter login |mama|papa|: ");
     String login = br.readLine();
@@ -80,7 +81,7 @@ public class Users {
       users.put(temp[0], temp[1]);
       userNames.add(temp[0]);
     }
-   makeCrypto(userNames);
+ //  makeCrypto(userNames);
 
   }
 

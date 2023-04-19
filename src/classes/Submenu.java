@@ -234,6 +234,7 @@ public class Submenu {
         amount *= multiply;
         record.setAmount(amount);
         records.add(record);
+
         I_O_Crypto.makeOutputFile(records);
         return;
       }

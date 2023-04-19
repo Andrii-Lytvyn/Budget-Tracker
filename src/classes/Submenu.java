@@ -313,7 +313,7 @@ public class Submenu {
             if (!comment.equals(record.getComment())) {
               record.setComment(comment);
             }
-            IOCrypto.makeOutputFile(records);
+            IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
           }
         }
         return;
@@ -337,7 +337,7 @@ public class Submenu {
       return;
     }
     records.removeIf(record -> record.getId() == id);
-    IOCrypto.makeOutputFile(records);
+    IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
   }
 }
 

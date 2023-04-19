@@ -14,8 +14,8 @@ public class BudgetTracker {
   public static List<Users> users = new ArrayList<>();
 
   public static void main(String[] args) throws IOException, ParseException {
-   // File budgetFile = new File("src/res/budget.txt");
-   // IOCrypto.parseFileUncrypted(budgetFile, records);
+    // File budgetFile = new File("src/res/budget.txt");
+    // IOCrypto.parseFileUncrypted(budgetFile, records);
     File loginFile = new File("src/res/login.txt");
     File crypto = new File("src/res/crypto.txt");
 
@@ -43,9 +43,9 @@ public class BudgetTracker {
     categories.add(c9);
 
 
-    IOCrypto.makeRecordsFromCryptoFile(crypto, records);
+    IOCrypto.makeUnCrypt(crypto, records);
     IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
     //Submenu.addRecord(records,categories);
-       Output.chartDate(records, Operations.stringToDate("01.04.2023"), Operations.stringToDate("20.04.2023"));
+    Output.chartDate(records, Operations.stringToDate("01.04.2023"), Operations.stringToDate("20.04.2023"));
   }
 }

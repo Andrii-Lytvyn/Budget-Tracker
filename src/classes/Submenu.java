@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.*;
 import java.util.Calendar;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -272,7 +271,8 @@ public class Submenu {
         amount *= multiply;
         record.setAmount(amount);
         records.add(record);
-        I_O_Crypto.makeOutputFile(records);
+
+        IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
         return;
       }
     }
@@ -351,7 +351,7 @@ public class Submenu {
             if (!comment.equals(record.getComment())) {
               record.setComment(comment);
             }
-            I_O_Crypto.makeOutputFile(records);
+            IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
           }
         }
         return;
@@ -360,7 +360,7 @@ public class Submenu {
   }
 
   /**
-   * Delete record from list of records
+   * Delete record from list of records.
    *
    * @param records List of records
    * @throws IOException if IO error
@@ -375,7 +375,7 @@ public class Submenu {
       return;
     }
     records.removeIf(record -> record.getId() == id);
-    I_O_Crypto.makeOutputFile(records);
+    IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
   }
 }
 

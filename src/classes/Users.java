@@ -1,6 +1,5 @@
 package classes;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,9 +44,10 @@ public class Users {
     BufferedReader inputFileReader = new BufferedReader(new FileReader(usersFile));
     Map<String, String> users = new HashMap<>();
     for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
-      String[] temp = row.split(I_O_Crypto.SEP);
+      String[] temp = row.split(IOCrypto.SEP);
       users.put(temp[0], temp[1]);
       userNames.add(temp[0]);
+
     }
     System.out.println();
     System.out.print(Colors.BLUE_BRIGHT + "Enter login:     " + Colors.RESET);
@@ -78,11 +78,12 @@ public class Users {
     BufferedReader inputFileReader = new BufferedReader(new FileReader(usersFile));
     Map<String, String> users = new HashMap<>();
     for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
-      String[] temp = row.split(I_O_Crypto.SEP);
+      String[] temp = row.split(IOCrypto.SEP);
       users.put(temp[0], temp[1]);
+
       userNames.add(temp[0]);
     }
-   makeCrypto(userNames);
+ //  makeCrypto(userNames);
 
   }
 
@@ -93,7 +94,7 @@ public class Users {
     int j = 0;
     for (String items : list) {
       for (int i = 0; i < items.length(); i++) {
-        int code = (int) items.charAt(i) + I_O_Crypto.CRYPTO;
+        int code = (int) items.charAt(i) + IOCrypto.CRYPTO;
         tempString.append((char) code);
       }
       list.set(j, tempString.toString());
@@ -127,7 +128,7 @@ public class Users {
       for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
         StringBuilder tempString = new StringBuilder();
         for (int i = 0; i < row.length(); i++) {
-          int code = (int) row.charAt(i) - I_O_Crypto.CRYPTO;
+          int code = (int) row.charAt(i) - IOCrypto.CRYPTO;
           tempString.append((char) code);
         }
         System.out.println(tempString);

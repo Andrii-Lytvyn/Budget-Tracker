@@ -10,6 +10,13 @@ public class Output {
    * @param records List of Record with payments (can be sorted and filtered before)
    */
   public static void printList(List<Record> records) {
+    for(Record record: records){
+      String recordRow = String.format("|%4d|%12s|%20s|%10s|%11f|%25s|",
+          record.getId(), Operations.dateToString(record.getDate()), record.getCategory(), record.getUser(), record.getAmount(), record.getComment());
+      System.out.println(recordRow);
+
+    }
+
     // TODO
   }
 
@@ -48,17 +55,17 @@ public class Output {
    * @param dateBegin Begin of payments period
    * @param dateEnd   End of payments period
    */
-  public static void chartUser(List<Record> records, List<Users> users,
+  public static void chartUser(List<Record> records, List<String> users,
       Date dateBegin, Date dateEnd) {
     System.out.println("--------------------------------------------------------------------------------------------------------------");
     System.out.println("|     User      |                                           Amount                                           |");
     System.out.println("--------------------------------------------------------------------------------------------------------------");
     double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
-    for (Users user : users) {
-      double userSum = -1 * Operations.expensesByUser(records, user.getName(),
+    for (String user : users) {
+      double userSum = -1 * Operations.expensesByUser(records, user,
           dateBegin, dateEnd); //expenses are negative
       double percent = userSum * 100 / totalEx;
-      System.out.print("| " + user.getName() + " |");
+      System.out.print("| " + user + " |");
       for (int i = 0; i < percent; ++i) {
         System.out.print("#");
       }
@@ -87,6 +94,7 @@ public class Output {
     for (Date date : dates) {
       double dateSum = -1 * Operations.expensesByDate(records, date); //expenses are negative
       double percent = -1 * dateSum * 100 / totalEx;
+      if(percent == 0) continue;
       System.out.print("| " + Operations.dateToString(date) + " |");
       for (int i = 0; i < percent; ++i) {
         System.out.print("#");

@@ -10,19 +10,16 @@ import java.util.List;
 
 public class BudgetTracker {
   public static List<Record> records = new ArrayList<>();
-  public static List<Record> cryptoRecords = new ArrayList<>();
   public static List<Category> categories = new ArrayList<>();
-  public static List<Users> users = new ArrayList<>();
 
-  public static void main(String[] args) throws IOException, ParseException, AWTException {
-    File budgetFile = new File("src/res/budget.txt");
+  public static void main(String[] args) throws IOException, ParseException {
+    //File budgetFile = new File("src/res/budget.txt");
+    // IOCrypto.parseFileUnencrypted(budgetFile, records);
     File loginFile = new File("src/res/login.txt");
-    I_O_Crypto.parseFileUncrypted(budgetFile, records);
-    Record record = new Record();
-    //I_O_Crypto.makeCrypto(records);
+    File crypto = new File("src/res/crypto.txt");
 
-    //Users.makeCrypto(Users.getLoginFromFile(loginFile));
-
+    Users.showLogin(loginFile);
+    System.out.println(Users.getUserName());
      Users.showLogin(loginFile);
      Submenu.printHeader();
      System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
@@ -53,13 +50,11 @@ public class BudgetTracker {
 
    // Users.getLoginFromFile(loginFile);
 
-//    Submenu.addRecord(records,categories);
-//    Submenu.addRecord(records, categories);
-//    Submenu.editRecord(records, categories);
-//    Submenu.deleteRecord(records);
-//    Output.chartCategory(records, categories, Operations.stringToDate("01.01.2000"), Operations.stringToDate("20.04.2023"));
-//    Output.chartUser(records, users, Operations.stringToDate("01.01.2000"), Operations.stringToDate("20.04.2023"));
-    Output.chartDate(records, Operations.stringToDate("01.04.2023"), Operations.stringToDate("20.04.2023"));
+    IOCrypto.makeUnCrypt(crypto, records);
+    IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
+    Output.printList(records);
+    //Operations.datesBetween(Operations.getMinData(records), Operations.getMaxData(records));
+    //Submenu.addRecord(records, categories);
+    //Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
   }
-
 }

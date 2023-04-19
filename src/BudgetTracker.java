@@ -48,7 +48,12 @@ public class BudgetTracker {
 
    // Users.getLoginFromFile(loginFile);
 
-    Submenu.addRecord(records,categories);
-    Submenu.addRecord(records, categories);
+//    Submenu.addRecord(records,categories);
+//    Submenu.addRecord(records, categories);
+//    Submenu.editRecord(records, categories);
+//    Submenu.deleteRecord(records);
+//    Output.chartCategory(records, categories, Operations.stringToDate("01.01.2000"), Operations.stringToDate("20.04.2023"));
+//    Output.chartUser(records, users, Operations.stringToDate("01.01.2000"), Operations.stringToDate("20.04.2023"));
+    Output.chartDate(records, Operations.stringToDate("01.04.2023"), Operations.stringToDate("20.04.2023"));
   }
 }

@@ -1,6 +1,5 @@
 package classes;
 
-import java.awt.*;
 import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -92,7 +91,7 @@ public class I_O_Crypto {
       String[] temp = line.split(SEP);
       Record record = new Record();
       record.setId(Integer.parseInt(temp[0]));
-      record.setDate(Operations.StringToDate(temp[1]));
+      record.setDate(Operations.stringToDate(temp[1]));
       record.setUser(temp[2]);
       record.setAmount(Double.parseDouble(temp[3]));
       record.setCategory(temp[4]);

@@ -131,7 +131,7 @@ public class I_O_Crypto {
    * @return
    */
   public static String recordToString(Record record) {
-    return record.getId() + "," + record.getDate() + "," + record.getUser() + "," + record.getAmount() +
+    return record.getId() + "," + Operations.dateToString(record.getDate()) + "," + record.getUser() + "," + record.getAmount() +
             "," + record.getCategory() + "," + record.getComment() + "\n";
   }
 

@@ -183,7 +183,7 @@ public class Submenu {
     Calendar today = Calendar.getInstance();
     Date currentDate = today.getTime();
     Date stDate = currentDate;
-
+    String categoryName = "";
     boolean income = false;
     int multiply = 1;
     int id = Record.getNewRecordId(records);
@@ -204,12 +204,14 @@ public class Submenu {
     if (!startDate.isEmpty()) {
       stDate = formatter.parse(startDate);
     }
-    for (int i = 0; i < categories.size(); ++i) {
-      System.out.println("" + i + " " + categories.get(i).getTitle());
+    if (!income) {
+      for (int i = 0; i < categories.size(); ++i) {
+        System.out.println("" + i + " " + categories.get(i).getTitle());
+      }
+      System.out.print("Choose category from list (1-10):      ");
+      int cat = Integer.parseInt(br.readLine());
+      categoryName = categories.get(cat).getTitle();//get category by number and get title
     }
-    System.out.print("Choose category from list (1-10):      ");
-    int cat = Integer.parseInt(br.readLine());
-    String categoryName = categories.get(cat).getTitle();//get category by number and get title
     System.out.print("Input amount:      ");
     double amount = Double.parseDouble(br.readLine());
     System.out.println();

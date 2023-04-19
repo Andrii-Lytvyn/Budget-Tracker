@@ -31,7 +31,7 @@ public class Operations {
    * @return Date
    * @throws ParseException If date format not according "dd.MM.yyyy"
    */
-  public static Date StringToDate(String string) throws ParseException {
+  public static Date stringToDate(String string) throws ParseException {
     DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     return dateFormat.parse(string);
   }
@@ -64,7 +64,7 @@ public class Operations {
     return records.stream()
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
-        .filter(x -> x.getAmount() > 0)
+        .filter(x -> x.getAmount() < 0)
         .mapToDouble(Record::getAmount)
         .sum();
   }
@@ -83,6 +83,7 @@ public class Operations {
     return records.stream()
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
+        .filter(x -> x.getAmount() < 0)
         .filter(x -> x.getUser().equals(user))
         .mapToDouble(Record::getAmount)
         .sum();
@@ -102,6 +103,7 @@ public class Operations {
     return records.stream()
         .filter(x -> x.getDate().after(dateBegin))
         .filter(x -> x.getDate().before(dateEnd))
+        .filter(x -> x.getAmount() < 0)
         .filter(x -> x.getCategory().equals(category))
         .mapToDouble(Record::getAmount)
         .sum();
@@ -117,6 +119,7 @@ public class Operations {
   public static double expensesByDate(List<Record> records, Date date) {
     return records.stream()
         .filter(x -> x.getDate().equals(date))
+        .filter(x -> x.getAmount() < 0)
         .mapToDouble(Record::getAmount)
         .sum();
   }

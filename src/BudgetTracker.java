@@ -9,13 +9,11 @@ import java.util.List;
 
 public class BudgetTracker {
   public static List<Record> records = new ArrayList<>();
-  public static List<Record> cryptoRecords = new ArrayList<>();
   public static List<Category> categories = new ArrayList<>();
-  public static List<Users> users = new ArrayList<>();
 
   public static void main(String[] args) throws IOException, ParseException {
-    // File budgetFile = new File("src/res/budget.txt");
-    // IOCrypto.parseFileUncrypted(budgetFile, records);
+    File budgetFile = new File("src/res/budget.txt");
+   IOCrypto.parseFileUnencrypted(budgetFile, records);
     File loginFile = new File("src/res/login.txt");
     File crypto = new File("src/res/crypto.txt");
 
@@ -41,7 +39,6 @@ public class BudgetTracker {
     categories.add(c8);
     Category c9 = new Category(7, "Medicine", false);
     categories.add(c9);
-
 
     IOCrypto.makeUnCrypt(crypto, records);
     IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);

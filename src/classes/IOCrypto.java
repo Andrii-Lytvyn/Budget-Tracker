@@ -33,16 +33,18 @@ public class IOCrypto {
   }
 
   /**
-   * Метод по расшифровке файла. Проверяет не пустой ли файл. Если нет расшифровывает и отображает записи.
-   * Method decrypts file to List<Records>
+   * Methods decrypt file, parse it and add records to List<Record>.
+   * Use methods parseRecordFromString().
+   * <p>
+   * Check empty file.
    *
-   * @param cryptoFile - Decrypts file
-   * @throws IOException throw
+   * @param cryptoFile - File for decrypts.
+   * @throws IOException throw.
    */
   public static void makeUnCrypt(File cryptoFile, List<Record> records) throws IOException, ParseException {
     BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
     if (cryptoFile.length() == 0) {
-      System.out.println("Файл пуст");
+      System.out.println("Empty file");
     } else {
       for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
         StringBuilder tempString = new StringBuilder();
@@ -57,36 +59,22 @@ public class IOCrypto {
   }
 
   /**
-   * Parse and add record from String to List<Record>
+   * Parse and add record from String to List<Record>.
    *
-   * @param line    String from file
-   * @param records records for adding
-   * @throws ParseException can throw
+   * @param line    String from file.
+   * @param records records for adding.
+   * @throws ParseException can throw.
    */
   public static void parseRecordFromString(String line, List<Record> records) throws ParseException {
-    for (int i = 0; i < line.length(); ++i) {
-      String[] temp = line.split(SEP);
-      Record record = new Record();
-      record.setId(Integer.parseInt(temp[0]));
-      record.setDate(Operations.stringToDate(temp[1]));
-      record.setUser(temp[2]);
-      record.setAmount(Double.parseDouble(temp[3]));
-      record.setCategory(temp[4]);
-      record.setComment(temp[5]);
-      records.add(record);
-      return;
-    }
-  }
-
-
-  /**
-   * Make Record from String
-   *
-   * @return parsed String from Record plus new line
-   */
-  public static String recordToString(Record record) {
-    return record.getId() + "," + Operations.dateToString(record.getDate()) + "," + record.getUser() + "," + record.getAmount() +
-            "," + record.getCategory() + "," + record.getComment() + "\n";
+    String[] temp = line.split(SEP);
+    Record record = new Record();
+    record.setId(Integer.parseInt(temp[0]));
+    record.setDate(Operations.stringToDate(temp[1]));
+    record.setUser(temp[2]);
+    record.setAmount(Double.parseDouble(temp[3]));
+    record.setCategory(temp[4]);
+    record.setComment(temp[5]);
+    records.add(record);
   }
 
   /**
@@ -148,4 +136,5 @@ public class IOCrypto {
       System.err.println("Input/output exception: " + e.getMessage());
     }
   }
+  //TODO make something when file is empty. Or no file
 }

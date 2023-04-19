@@ -322,7 +322,7 @@ public class Submenu {
   }
 
   /**
-   * Delete record from list of records
+   * Delete record from list of records.
    *
    * @param records List of records
    * @throws IOException if IO error

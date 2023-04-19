@@ -2,7 +2,7 @@
 * Main file of project. Entrance point.
 ---
 # Operations.java
-* Operetions with data, sorts, filters ...
+* Operations with data, sorts, filters ...
 ---
 # Output.java
 * Output methods, Chart diagrams... 
@@ -130,3 +130,67 @@
 ---
 ### 32. public static void parseFileUncrypted(File cryptoFile, List<Record> records) throws IOException, ParseException {
 * parse uncrypted file of records for tests
+---
+
+
+## Record.java
+### public int getId() 
+* Get record Id
+---
+### public Date getDate() 
+* Get record Date when record is made
+---
+### public String getCategory()
+* Get record Category (food, goods ...)
+---
+### public String getUser() 
+* Get record User, who make record 
+---
+### public double getAmount()
+* Get record Amount for expenses is negative
+---
+### public String getComment()
+* Get record Comment for record
+---
+### public void setId(int id) 
+* Set record Id
+---
+### public void setDate(Date date) 
+* Set record Date when record is made
+---
+### public void setCategory(String category)
+* Set record Category (food, goods ...)
+---
+### public void setUser(String user)
+* Set record User, who make record
+---
+### public void setAmount(double amount)
+* Set record Amount for expenses is negative
+---
+### public void setComment(String comment) {
+* Set record Comment for record
+---
+### public static int getNewRecordId(List<Record> records)
+* Calculate new ID in List of records
+---
+
+## Category.java
+
+### public void setTitle(String title) 
+* Set Category Title
+* ---
+### public void setAllowed(boolean allowed) 
+* Set flag Allowed - for parents and for children aviable different categories
+* ---
+### public int getId() 
+* Get category Id
+---
+### public String getTitle()
+* Get category Title
+---
+### public boolean isAllowed() 
+* Get flag Allowed need to know show this catregory to children or no
+---
+
+
+## Users.java

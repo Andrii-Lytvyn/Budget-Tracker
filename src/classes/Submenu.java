@@ -253,6 +253,8 @@ public class Submenu {
     double amount = 0;
     int multiply = 1;
     String comment = "";
+    String categoryName = "";
+
     int id = Integer.parseInt(br.readLine());
     System.out.print("Want you change INCOME/EXPENSES? [y/n] ");
     String input = br.readLine();
@@ -269,12 +271,16 @@ public class Submenu {
       System.out.print(Colors.BLUE + "Input comment:     ");
       comment = br.readLine();
     }
-    for (int i = 0; i < categories.size(); ++i) {
-      System.out.println("" + i + " " + categories.get(i).getTitle());
+    System.out.print("Want you change comment? [y/n] ");
+    input = br.readLine();
+    if (input.equalsIgnoreCase("y")) {
+      for (int i = 0; i < categories.size(); ++i) {
+        System.out.println("" + i + " " + categories.get(i).getTitle());
+      }
+      System.out.print("Choose category from list (1-10):      ");
+      int cat = Integer.parseInt(br.readLine());
+      categoryName = categories.get(cat).getTitle();//get category by number and get title
     }
-    System.out.print("Choose category from list (1-10):      ");
-    int cat = Integer.parseInt(br.readLine());
-    String categoryName = categories.get(cat).getTitle();//get category by number and get title
     System.out.print("Want you change AMOUNT? [y/n] ");
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
@@ -329,6 +335,7 @@ public class Submenu {
       return;
     }
     records.removeIf(record -> record.getId() == id);
+    I_O_Crypto.makeOutputFile(records);
   }
 }
 

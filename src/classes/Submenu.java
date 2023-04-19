@@ -229,7 +229,8 @@ public class Submenu {
         if (!income) {
           multiply = -1;
         }
-        record.setAmount(amount * multiply);
+        amount *= multiply;
+        record.setAmount(amount);
         records.add(record);
         I_O_Crypto.makeOutputFile(records);
         return;
@@ -297,8 +298,9 @@ public class Submenu {
             if (!income) {
               multiply = -1;
             }
+            amount *= multiply;
             if (amount != record.getAmount()) {
-              record.setAmount(amount * multiply);
+              record.setAmount(amount);
             }
             if (!comment.equals(record.getComment())) {
               record.setComment(comment);
@@ -326,14 +328,7 @@ public class Submenu {
     if (!input.equalsIgnoreCase("y")) {
       return;
     }
-    // Зацените как Идея подсказала заменить - красиво
     records.removeIf(record -> record.getId() == id);
-//
-//    for(Record record: records){
-//      if (record.getId() == id){
-//        records.remove(record);
-//      }
-//    }
   }
 }
 

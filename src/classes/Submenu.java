@@ -13,56 +13,39 @@ import java.util.Date;
 import java.util.List;
 
 public class Submenu {
-    public static final String LINEOPEN = "╔======╦==============╦===============╦============╦==============╦========================╗";
 
-    public static final String HEADER = "║  ID  ║     Date     ║    Category   ║    User    ║    Amount    ║        Comments        ║";
-    public static final String LINEMIDLE = "║======╬==============╬===============╬============╬==============╬========================║";
-    public static final String LINEOPEN2 = "╟----4------10----------------15------------10-----------10-------------------35--------------------╢";
+  public static final String LINEOPEN = " ╔======╦==============╦===============╦============╦==============╦========================╗";
+  public static final String HEADER = "   ║  ID  ║     Date     ║    Category   ║    User    ║    Amount    ║        Comments        ║";
+  public static final String LINECLOSE = "╚======╩==============╩===============╩============╩==============╩========================╝";
 
-    public static void printHeader() {
-        System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEOPEN + Colors.RESET);
-        System.out.println(Colors.WHITE_BOLD_BRIGHT + HEADER + Colors.RESET);
-        System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEMIDLE + Colors.RESET);
-        System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEOPEN2 + Colors.RESET);
-        System.out.printf("");
-    }
+  public static void printHeader() {
+    System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEOPEN + Colors.RESET);
+    System.out.println(Colors.WHITE_BOLD_BRIGHT + HEADER + Colors.RESET);
+    System.out.println(Colors.WHITE_BOLD_BRIGHT + LINECLOSE + Colors.RESET);
+  }
 
 
-    public static void delayFirst() {
-        int delay = 250;
-        long start = System.currentTimeMillis();
-        while (start >= System.currentTimeMillis() - delay) ;
-    }
+  public static void delayFirst() {
+    int delay = 250;
+    long start = System.currentTimeMillis();
+    while (start >= System.currentTimeMillis() - delay)
+      ;
+  }
 
-    public static void delaySecond() {
-        int delay = 500;
-        long start = System.currentTimeMillis();
-        while (start >= System.currentTimeMillis() - delay) ;
-    }
+  public static void delaySecond() {
+    int delay = 500;
+    long start = System.currentTimeMillis();
+    while (start >= System.currentTimeMillis() - delay)
+      ;
+  }
 
-    public static void clearAll() throws AWTException {
-        Robot r = new Robot();
-        r.keyPress(KeyEvent.VK_CONTROL);
-        r.keyPress(KeyEvent.VK_Q);
-        r.keyRelease(KeyEvent.VK_CONTROL);
-        r.keyRelease(KeyEvent.VK_Q);
-    }
-    public static void showAll(List<Record> records) throws IOException, ParseException {
-
-        for (Record record : records) { //cut long Titles
-            int id = record.getId();
-            String category = record.getCategory();
-            String user = record.getUser();
-            double amount = record.getAmount();
-            String comment = record.getComment();
-            String data = Operations.dateToString(record.getDate());
-
-            String recordRow = String.format("|%4d|%10s|%10s|%35s|%11s|%11s|%12s|%13s|%9s|",
-                   id, category, user, amount, comment,
-                    data);
-            System.out.println(recordRow);
-        }
-    }
+  public static void clearAll() throws AWTException {
+    Robot r = new Robot();
+    r.keyPress(KeyEvent.VK_CONTROL);
+    r.keyPress(KeyEvent.VK_Q);
+    r.keyRelease(KeyEvent.VK_CONTROL);
+    r.keyRelease(KeyEvent.VK_Q);
+  }
 
 
 /*
@@ -182,12 +165,13 @@ public class Submenu {
         }
     }
 */
+
   /**
    * Add new record to List of records
    *
-   * @param records List of Record with payments (can be sorted and filtered before)
+   * @param records    List of Record with payments (can be sorted and filtered before)
    * @param categories List of Categories
-   * @throws IOException IO error
+   * @throws IOException    IO error
    * @throws ParseException if illegal Date format
    */
   public static void addRecord(List<Record> records, List<Category> categories)
@@ -199,7 +183,7 @@ public class Submenu {
     Calendar today = Calendar.getInstance();
     Date currentDate = today.getTime();
     Date stDate = currentDate;
-
+    String categoryName = "";
     boolean income = false;
     int multiply = 1;
     int id = Record.getNewRecordId(records);
@@ -212,20 +196,22 @@ public class Submenu {
     if (incomeOrExpenses.equalsIgnoreCase("i")) {
       income = true;
     }
-    System.out.print(Colors.BLUE + "Input title:     ");
-    String title = br.readLine();
+    System.out.print(Colors.BLUE + "Input comment:     ");
+    String comment = br.readLine();
     System.out.println("Current date: " + Operations.dateToString(currentDate));
     System.out.print(Colors.BLUE + "Input date or 'Enter' for current date (dd.MM.yyyy):  ");
     String startDate = br.readLine();
     if (!startDate.isEmpty()) {
       stDate = formatter.parse(startDate);
     }
-    for (int i = 0; i < categories.size(); ++i) {
-      System.out.println("" + i + " " + categories.get(i).getTitle());
+    if (!income) {
+      for (int i = 0; i < categories.size(); ++i) {
+        System.out.println("" + i + " " + categories.get(i).getTitle());
+      }
+      System.out.print("Choose category from list (1-10):      ");
+      int cat = Integer.parseInt(br.readLine());
+      categoryName = categories.get(cat).getTitle();//get category by number and get title
     }
-    System.out.print("Choose category from list (1-10):      ");
-//    int cat = Integer.parseInt(br.readLine());
-//    String categoryName = categories.get(cat).getTitle();//get category by number and get title
     System.out.print("Input amount:      ");
     double amount = Double.parseDouble(br.readLine());
     System.out.println();
@@ -240,16 +226,118 @@ public class Submenu {
         record.setId(id);
         record.setUser(Users.getUserName());
         record.setDate(stDate);
-        //record.setCategory(categoryName);
+        record.setComment(comment);
+        record.setCategory(categoryName);
         if (!income) {
           multiply = -1;
         }
-        record.setAmount(amount * multiply);
+        amount *= multiply;
+        record.setAmount(amount);
         records.add(record);
         I_O_Crypto.makeOutputFile(records);
         return;
       }
     }
+  }
+
+  /**
+   * Edit existing record, only fields: Income/Expenses; Comment; Amount; Category
+   *
+   * @param records    List of Record with payments (can be sorted and filtered before)
+   * @param categories List of Categories
+   * @throws IOException IO error
+   */
+  public static void editRecord(List<Record> records, List<Category> categories)
+      throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    System.out.print("Input ID of record to delete: ");
+    boolean income = false;
+    double amount = 0;
+    int multiply = 1;
+    String comment = "";
+    String categoryName = "";
+
+    int id = Integer.parseInt(br.readLine());
+    System.out.print("Want you change INCOME/EXPENSES? [y/n] ");
+    String input = br.readLine();
+    if (input.equalsIgnoreCase("y")) {
+      System.out.print(Colors.BLUE + "Is this income or expenses (i/e):     ");
+      String incomeOrExpenses = br.readLine();
+      if (incomeOrExpenses.equalsIgnoreCase("i")) {
+        income = true;
+      }
+    }
+    System.out.print("Want you change comment? [y/n] ");
+    input = br.readLine();
+    if (input.equalsIgnoreCase("y")) {
+      System.out.print(Colors.BLUE + "Input comment:     ");
+      comment = br.readLine();
+    }
+    System.out.print("Want you change comment? [y/n] ");
+    input = br.readLine();
+    if (input.equalsIgnoreCase("y")) {
+      for (int i = 0; i < categories.size(); ++i) {
+        System.out.println("" + i + " " + categories.get(i).getTitle());
+      }
+      System.out.print("Choose category from list (1-10):      ");
+      int cat = Integer.parseInt(br.readLine());
+      categoryName = categories.get(cat).getTitle();//get category by number and get title
+    }
+    System.out.print("Want you change AMOUNT? [y/n] ");
+    input = br.readLine();
+    if (input.equalsIgnoreCase("y")) {
+      System.out.print("Input amount:      ");
+      amount = Double.parseDouble(br.readLine());
+    }
+    System.out.println();
+    System.out.print(Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SAVE " +
+        Colors.RESET + " " + Colors.WHITE_BACKGROUND_BRIGHT +
+        Colors.BLACK_BOLD + " e-EXIT: " + Colors.RESET);
+    while (true) {
+      String command = br.readLine();
+      if (command.equalsIgnoreCase("e")) {
+        return;
+      } else if (command.equalsIgnoreCase("s")) {
+        for (Record record : records) {
+          if (record.getId() == id) {
+            if (categoryName.equals(record.getCategory())) {
+              record.setCategory(categoryName);
+            }
+            if (!income) {
+              multiply = -1;
+            }
+            amount *= multiply;
+            if (amount != record.getAmount()) {
+              record.setAmount(amount);
+            }
+            if (!comment.equals(record.getComment())) {
+              record.setComment(comment);
+            }
+            I_O_Crypto.makeOutputFile(records);
+          }
+        }
+        return;
+      }
+    }
+  }
+
+  /**
+   * Delete record from list of records
+   *
+   * @param records List of records
+   * @throws IOException if IO error
+   */
+  public static void deleteRecord(List<Record> records) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    System.out.print("Input ID of record to delete: ");
+    int id = Integer.parseInt(br.readLine());
+    System.out.println("Are you sure you want to delete record? [y/n]");
+    String input = br.readLine();
+    if (!input.equalsIgnoreCase("y")) {
+      return;
+    }
+    records.removeIf(record -> record.getId() == id);
+    I_O_Crypto.makeOutputFile(records);
   }
 }
 

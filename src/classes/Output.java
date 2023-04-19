@@ -26,17 +26,17 @@ public class Output {
     System.out.println("--------------------------------------------------------------------------------------------------------------");
     System.out.println("|    Category   |                                          Amount                                            |");
     System.out.println("--------------------------------------------------------------------------------------------------------------");
-    double totalEx = Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
+    double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (Category category : categories) {
-      double categorySum = Operations.expensesByCategory(records, category.getTitle(),
-          dateBegin, dateEnd);
+      double categorySum = -1 * Operations.expensesByCategory(records, category.getTitle(),
+          dateBegin, dateEnd); //expenses are negative
       double percent = categorySum * 100 / totalEx;
-      System.out.printf("| %15s |", category);
+      System.out.printf("| %15s |", category.getTitle());
       for (int i = 0; i < percent; ++i) {
         System.out.print("#");
       }
       percent = Math.round(percent);
-      System.out.println(" " + percent + "%");
+      System.out.println(" " + percent + "% " + categorySum);
     }
   }
 
@@ -53,12 +53,12 @@ public class Output {
     System.out.println("--------------------------------------------------------------------------------------------------------------");
     System.out.println("|     User      |                                           Amount                                           |");
     System.out.println("--------------------------------------------------------------------------------------------------------------");
-    double totalEx = Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
+    double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (Users user : users) {
-      double userSum = Operations.expensesByUser(records, user.getName(),
-          dateBegin, dateEnd);
+      double userSum = -1 * Operations.expensesByUser(records, user.getName(),
+          dateBegin, dateEnd); //expenses are negative
       double percent = userSum * 100 / totalEx;
-      System.out.print("| " + user + " |");
+      System.out.print("| " + user.getName() + " |");
       for (int i = 0; i < percent; ++i) {
         System.out.print("#");
       }
@@ -85,14 +85,14 @@ public class Output {
     System.out.println("|     Dates     |                                            Amount                                          |");
     System.out.println("--------------------------------------------------------------------------------------------------------------");
     for (Date date : dates) {
-      double dateSum = Operations.expensesByDate(records, date);
-      double percent = dateSum * 100 / totalEx;
+      double dateSum = -1 * Operations.expensesByDate(records, date); //expenses are negative
+      double percent = -1 * dateSum * 100 / totalEx;
       System.out.print("| " + Operations.dateToString(date) + " |");
       for (int i = 0; i < percent; ++i) {
         System.out.print("#");
       }
       percent = Math.round(percent);
-      System.out.println(" " + percent + "%");
+      System.out.println(" " + percent + "% " + dateSum);
     }
 
   }

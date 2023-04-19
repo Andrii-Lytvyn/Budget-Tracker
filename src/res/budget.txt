@@ -1,2 +1,6 @@
-1,mama,18.04.2023,Clothes,127.0,essen
-2,papa,18.04.2023,Goods,-12.0,junk food
+1,10.04.2023,Mother,-200.0,Food,coca-cola
+2,12.04.2023,Father,-10.0,Party,hot-dog
+3,13.04.2023,papa,-127.0,House,carpet
+5,14.04.2023,papa,-50.0,Clothes,brod
+7,15.04.2023,mama,-15.51,Food,fish
+8,19.04.2023,mama,1500.0,,salary for March

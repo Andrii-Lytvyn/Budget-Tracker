@@ -231,6 +231,31 @@ public class Submenu {
       }
     }
   }
+
+  /**
+   * Delete record from list of records
+   *
+   * @param records List of records
+   * @throws IOException  if IO error
+   */
+  public static void deleteRecord(List<Record> records) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    System.out.print("Input ID of record to delete: ");
+    int id = Integer.parseInt(br.readLine());
+    System.out.println("Are you sure want to delete record? [y/n]");
+    String input = br.readLine();
+    if (!input.equalsIgnoreCase("y")) {
+      return;
+    }
+    // Зацените как Идея подсказала заменить - красиво
+    records.removeIf(record -> record.getId() == id);
+//
+//    for(Record record: records){
+//      if (record.getId() == id){
+//        records.remove(record);
+//      }
+//    }
+  }
 }
 
 

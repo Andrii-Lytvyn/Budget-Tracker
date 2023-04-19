@@ -10,3 +10,7 @@
 12,19.04.2023,papa,-263.0,Transport,Tires
 13,19.04.2023,papa,-333.0,Transport,Paint
 14,19.04.2023,mama,-111.0,Medicine,testdebug
+16,09.04.2023,mama,-111.0,Entertainment,test3
+17,08.04.2023,mama,-222.0,Vacations,08.04.2023
+18,06.04.2023,mama,-444.0,Hobby,asdf
+19,20.04.2023,mama,-77.0,Entertainment,20apr

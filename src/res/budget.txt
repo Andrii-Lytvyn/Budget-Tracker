@@ -1,7 +1,1 @@
-1,10.04.2023,Mother,-200.0,Food,coca-cola
-2,12.04.2023,Father,-10.0,Party,hot-dog
-3,13.04.2023,papa,-127.0,House,carpet
-5,14.04.2023,papa,-50.0,Clothes,brod
-7,15.04.2023,mama,-15.51,Food,fish
-8,19.04.2023,mama,1500.0,,salary for March
-9,19.04.2023,mama,113.0,,new
+1,10.04.2023,Mother,-200.0,Food,coca-cola2,12.04.2023,Father,-10.0,Party,hot-dog3,13.04.2023,papa,-127.0,House,carpet5,14.04.2023,papa,-50.0,Clothes,brod7,15.04.2023,mama,-15.51,Food,fish8,19.04.2023,mama,1500.0,,salary for March9,19.04.2023,mama,113.0,,new10,17.04.2023,mama,-100.0,Goods,test

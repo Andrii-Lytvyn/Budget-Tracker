@@ -40,9 +40,12 @@ public class BudgetTracker {
     Category c9 = new Category(7, "Medicine", false);
     categories.add(c9);
 
+
     IOCrypto.makeUnCrypt(crypto, records);
     IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
-    //Submenu.addRecord(records,categories);
-    Output.chartDate(records, Operations.stringToDate("01.04.2023"), Operations.stringToDate("20.04.2023"));
+    Output.printList(records);
+    //Operations.datesBetween(Operations.getMinData(records), Operations.getMaxData(records));
+    //Submenu.addRecord(records, categories);
+    //Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
   }
 }

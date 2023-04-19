@@ -189,7 +189,7 @@
 * Get category Title
 ---
 ### public boolean isAllowed() 
-* Get flag Allowed need to know show this catregory to children or no
+* Get flag Allowed need to know show this category to children or no
 ---
 
 

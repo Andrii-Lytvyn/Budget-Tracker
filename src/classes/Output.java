@@ -10,6 +10,13 @@ public class Output {
    * @param records List of Record with payments (can be sorted and filtered before)
    */
   public static void printList(List<Record> records) {
+    for(Record record: records){
+      String recordRow = String.format("|%4d|%12s|%20s|%10s|%11f|%25s|",
+          record.getId(), Operations.dateToString(record.getDate()), record.getCategory(), record.getUser(), record.getAmount(), record.getComment());
+      System.out.println(recordRow);
+
+    }
+
     // TODO
   }
 

@@ -43,11 +43,13 @@ _____________________
  Folder          | Name          | Description
 -----------------|---------------|-----------
 src/classes      | Category.java | Class Category сontains a list of all categories
-src/classes      | Crypto.java   | Data encryption class                     
+src/classes      | IOCrypto.java | Data encryption class                     
 src/classes      | Menu.java     | Main-menu and Submenu for Project
 src/classes      | Colors.java   | Class with several colors 
+src/classes      | Users.java    | Class of users - getters, setters constructor and methods for Users
 src/classes      | Output.java   | Output methods, Chart diagrams...               
-src/classes      | Users.java    | Class of users - getters, setters constructor and methods for Users                      
+src/classes      | Operations    | Class with sort and others operations
+src/classes      | Users.java    | Class of users - getters, setters constructor and methods for Users
 src/res          | login.txt     | List of Users and passwords. Decrypted
 src/res          | crypto.txt    | Crypted items
 src/res/sounds   | sound.wav     | Sound for main screen of Presentation

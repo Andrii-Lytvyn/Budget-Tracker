@@ -157,7 +157,7 @@ public class Menu {
 
   public static final String SHOW_SUB_MENU_CHART = ""
           +"\n"
-          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1 - Main menu <┈┈┘  " + Colors.RESET + " ";
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " r - Main menu  " + Colors.RESET + " ";
 
     public static void recordsMenu(List<Record> records, List<Category> categories)  throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -265,7 +265,7 @@ public class Menu {
             delaySecond();
             Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
 
-            System.out.println("Balance: " + Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+            Output.printFinance(records);
 
             System.out.println(LEGEND);
             System.out.println(SHOW_ALL_MENU_CHART_DATE);
@@ -282,7 +282,7 @@ public class Menu {
             delaySecond();
             Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
 
-            System.out.println("Balance: " + Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+            Output.printFinance(records);
 
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
@@ -298,7 +298,7 @@ public class Menu {
             delaySecond();
             Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
 
-            System.out.println("Balance: " + Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+            Output.printFinance(records);
 
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);

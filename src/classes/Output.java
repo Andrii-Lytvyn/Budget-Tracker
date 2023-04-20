@@ -31,17 +31,23 @@ public class Output {
    */
   public static void chartCategory(List<Record> records, List<Category> categories,
       Date dateBegin, Date dateEnd) {
-    System.out.println(Colors.WHITE_BRIGHT + "┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒");
-    System.out.println(Colors.WHITE_BRIGHT +"┃     DATE      ┃                                           AMOUNT                                          ┃");
-    System.out.println(Colors.WHITE_BRIGHT +"┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┸┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚"+Colors.RESET);
+    String color = Colors.RESET;
+    System.out.println(Colors.WHITE_BRIGHT + "┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒");
+    System.out.println(Colors.WHITE_BRIGHT +"┃     DATE         ┃                                           AMOUNT                                          ┃");
+    System.out.println(Colors.WHITE_BRIGHT +"┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┸┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚"+Colors.RESET);
     double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (Category category : categories) {
       double categorySum = -1 * Operations.expensesByCategory(records, category.getTitle(),
           dateBegin, dateEnd); //expenses are negative
       double percent = categorySum * 100 / totalEx;
-      System.out.printf("| %15s |", category.getTitle());
+      System.out.printf("| %16s |", category.getTitle());
       for (int i = 0; i < percent; ++i) {
-        System.out.print("#");
+        if(percent < 10) color = Colors.YELLOW;
+        if(percent > 10) color = Colors.BLUE;
+        if(percent > 15) color = Colors.CYAN;
+        if(percent > 30) color = Colors.RED_BRIGHT;
+        System.out.print(color + "*");
+        color = Colors.RESET;
       }
       percent = Math.round(percent);
       System.out.println(Colors.WHITE_BRIGHT + " " + Colors.WHITE_BRIGHT + categorySum + Colors.RESET + " (" + percent + "% )");
@@ -56,7 +62,9 @@ public class Output {
     double income = balance + expenses;
     String financeColor = Colors.GREEN;
     if (balance < 0) financeColor = Colors.RED;
-    System.out.println(Colors.WHITE_BRIGHT + "BALANCE: " + Colors.RESET
+    System.out.println(
+            "\n"
+            +Colors.WHITE_BRIGHT + "BALANCE: " + Colors.RESET
             + financeColor + balance + Colors.RESET
             + Colors.WHITE + " Expenses: " + Colors.RESET
             + Colors.RED + expenses +Colors.RESET
@@ -87,8 +95,10 @@ public class Output {
       double percent = userSum * 100 / totalEx;
       System.out.print(Colors.WHITE_BRIGHT + "┃      " + user + "     ┃" + Colors.RESET);
       for (int i = 0; i < percent; ++i) {
-        if(percent <= 50) color = Colors.YELLOW;
-        if(percent > 50) color = Colors.RED_BRIGHT;
+        if(percent < 10) color = Colors.YELLOW;
+        if(percent > 10) color = Colors.BLUE;
+        if(percent > 15) color = Colors.CYAN;
+        if(percent > 30) color = Colors.RED_BRIGHT;
         System.out.print(color + "*");
         color = Colors.RESET;
       }

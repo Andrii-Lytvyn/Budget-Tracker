@@ -452,7 +452,7 @@ public class Menu {
       categoryName = categories.get(cat).getTitle();//get category by number and get title
     }
     System.out.print("Input amount:      ");
-    double amount = Double.parseDouble(br.readLine());
+    double amount = Math.abs(Double.parseDouble(br.readLine()));
     System.out.println();
     System.out.print(Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SAVE " +
         Colors.RESET + " " + Colors.WHITE_BACKGROUND_BRIGHT +
@@ -528,7 +528,7 @@ public class Menu {
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
       System.out.print("Input amount:      ");
-      amount = Double.parseDouble(br.readLine());
+      amount = Math.abs(Double.parseDouble(br.readLine()));
     }
     System.out.println();
     System.out.print(Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SAVE " +

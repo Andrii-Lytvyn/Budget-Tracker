@@ -164,15 +164,15 @@ public class Operations {
    * @param dateEnd   End of payments period
    * @return new sorted LIst of Records
    */
-  public static List<Record> sortByDate(List<Record> records, Date dateBegin, Date dateEnd) {
-    List<Record> result;
-    result = records.stream()
-        .filter(x -> x.getDate().after(dateBegin))
-        .filter(x -> x.getDate().before(dateEnd))
-        .sorted(Comparator.comparing(Record::getDate))
-        .collect(Collectors.toList());
-    return result;
-  }
+//  public static List<Record> sortByDate(List<Record> records, Date dateBegin, Date dateEnd) {
+//    List<Record> result;
+//    result = records.stream()
+//        .filter(x -> x.getDate().after(dateBegin))
+//        .filter(x -> x.getDate().before(dateEnd))
+//        .sorted(Comparator.comparing(Record::getDate))
+//        .collect(Collectors.toList());
+//    return result;
+//  }
 
   /**
    * Sort LIst of All Records by Date
@@ -196,15 +196,15 @@ public class Operations {
    * @param dateEnd   End of payments period
    * @return new sorted LIst of Records
    */
-  public static List<Record> sortByUser(List<Record> records, Date dateBegin, Date dateEnd) {
-    List<Record> result;
-    result = records.stream()
-        .filter(x -> x.getDate().after(dateBegin))
-        .filter(x -> x.getDate().before(dateEnd))
-        .sorted(Comparator.comparing(Record::getUser))
-        .collect(Collectors.toList());
-    return result;
-  }
+//  public static List<Record> sortByUser(List<Record> records, Date dateBegin, Date dateEnd) {
+//    List<Record> result;
+//    result = records.stream()
+//        .filter(x -> x.getDate().after(dateBegin))
+//        .filter(x -> x.getDate().before(dateEnd))
+//        .sorted(Comparator.comparing(Record::getUser))
+//        .collect(Collectors.toList());
+//    return result;
+//  }
 
   /**
    * Sort LIst of All Records by User
@@ -260,15 +260,15 @@ public class Operations {
    * @param dateEnd   End of payments period
    * @return new sorted LIst of Records
    */
-  public static List<Record> sortByAmount(List<Record> records, Date dateBegin, Date dateEnd) {
-    List<Record> result;
-    result = records.stream()
-        .filter(x -> x.getDate().after(dateBegin))
-        .filter(x -> x.getDate().before(dateEnd))
-        .sorted(Comparator.comparing(Record::getAmount))
-        .collect(Collectors.toList());
-    return result;
-  }
+//  public static List<Record> sortByAmount(List<Record> records, Date dateBegin, Date dateEnd) {
+//    List<Record> result;
+//    result = records.stream()
+//        .filter(x -> x.getDate().after(dateBegin))
+//        .filter(x -> x.getDate().before(dateEnd))
+//        .sorted(Comparator.comparing(Record::getAmount))
+//        .collect(Collectors.toList());
+//    return result;
+//  }
 
   /**
    * Sort LIst of All Records by Amount

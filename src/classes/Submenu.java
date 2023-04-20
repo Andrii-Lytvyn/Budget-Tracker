@@ -228,7 +228,7 @@ public class Submenu {
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
-          case "e": {
+          case "r": {
             File file = new File("src/classes/1.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
@@ -257,100 +257,58 @@ public class Submenu {
             Submenu.recordsMenu(records, categories);
             break;
           }
+          case "e": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            editRecord(records, categories);
+            clearAll();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
+            break;
+          }
+          case "a": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            addRecord(records, categories);
+            clearAll();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
+            break;
+          }
+          case "d": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            deleteRecord(records);
+            clearAll();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
+            break;
+          }
         }
       }
     }
-                /*
-                case "5": {
-                    Comparator<Task> comparator = new TaskByDifficultComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "6": {
-                    Comparator<Task> comparator = new TaskByStatusComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "7": {
-                    Comparator<Task> comparator = new TaskByStartDateComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "8": {
-                    Comparator<Task> comparator = new TaskByFinishDateComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "9": {
-                    Comparator<Task> comparator1 = new TaskByIdComparator();
-                    tasks.sort(comparator1);
-                    refresh(tasks);
-                    break;
-                }
-                case "c": {
-                    changeUser(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "a": {
-                    addTask(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "d": {
-                    deleteTask(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "f": {
-                    finishTask(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "r": {
-                    System.out.println();
-                    System.out.print(ConsoleColors.BLUE_BOLD + "Input task ID to READ: " + ConsoleColors.RESET);
-                    int id = Integer.parseInt(br.readLine());
-                    if (checkIdInRange(tasks, id)) {
-                        readTask(tasks, id);
-                    }
-                    refresh(tasks);
-                    break;
-                }
-                case "g": {
-//          refresh(tasks);
-                    if (Task.getGeneral()) {
-                        Gant gant = new Gant();
-                        gant.printHead();
-//            tasks.sort(new TaskByIdComparator());
-                        for (Task task : tasks) {
-                            gant.printTask(task);
-                        }
-                        gant.printLine();
-                        System.out.println();
-                        System.out.println("Q - Quit");
-                        while (true) {
-                            String quit = br.readLine();
-                            if (quit != "") {
-                                break;
-                            }
-                        }
-                    }
-                    refresh(tasks);
-                }
-                case "q": {
-                    task.makeOutputFile(tasks);
-                    System.exit(0);
 
-                }
-            }
-        }
-    }
-*/
 
   /**
    * Add new record to List of records

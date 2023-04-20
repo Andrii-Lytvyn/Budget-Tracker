@@ -1,4 +1,5 @@
 import classes.*;
+import classes.Menu;
 import classes.Record;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -37,9 +38,9 @@ public class BudgetTracker {
     Menu.delaySecond();
     Output.printList(records);
     Output.printFinance(records);
-    System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
-    System.out.println(Submenu.SHOW_SYSTEM_MENU_MAIN);
-    Submenu.recordsMenu(records, categories);
+    System.out.println(Menu.SHOW_ALL_MENU_MAIN);
+    System.out.println(Menu.SHOW_SYSTEM_MENU_MAIN);
+    Menu.recordsMenu(records, categories);
 
 
 

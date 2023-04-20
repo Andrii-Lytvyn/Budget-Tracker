@@ -65,7 +65,7 @@ public class Users {
     try {
       if (users.get(login).equals(password)) {
         System.out.println(Colors.YELLOW_BOLD_BRIGHT + "Congratulations, you're logged in! \uD83D\uDC4C" + Colors.RESET);
-        Submenu.delayMain();
+        Menu.delayMain();
         setUserName(login);
       } else {
         System.err.println("Incorrect password.");

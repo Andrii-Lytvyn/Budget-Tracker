@@ -26,15 +26,15 @@ public class BudgetTracker {
     Category.createCategories();
 
     Users.showLogin(loginFile);
-    Submenu.clearAll();
+    Menu.clearAll();
 
     IOCrypto.makeUnCrypt(crypto, records);
     IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
 
     System.out.println();
-    Submenu.delaySecond();
-    Submenu.printHeader();
-    Submenu.delaySecond();
+    Menu.delaySecond();
+    Menu.printHeader();
+    Menu.delaySecond();
     Output.printList(records);
     Output.printFinance(records);
     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);

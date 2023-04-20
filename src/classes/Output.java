@@ -84,6 +84,7 @@ public class Output {
    */
   public static void chartDate(List<Record> records, Date dateBegin, Date dateEnd) {
     List<Date> dates;
+    String color = Colors.RESET;
     dates = Operations.datesBetween(dateBegin, dateEnd);
     // get total expenses for period
     double totalEx = Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
@@ -97,8 +98,14 @@ public class Output {
       if(percent == 0) continue;
       System.out.print("| " + Operations.dateToString(date) + " |");
       for (int i = 0; i < percent; ++i) {
-        System.out.print("#");
+        if(percent < 10) color = Colors.GREEN;
+        if(percent > 10) color = Colors.CYAN;
+        if(percent > 15) color = Colors.PURPLE;
+        if(percent > 30) color = Colors.RED_BRIGHT;
+        System.out.print(color + "#");
       }
+      color = Colors.RESET;
+      System.out.print(Colors.RESET);
       percent = Math.round(percent);
       System.out.println(" " + percent + "% " + dateSum);
     }

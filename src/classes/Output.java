@@ -49,13 +49,15 @@ public class Output {
   }
 
   public static void printFinance(List<Record> records){
-    double balance = Operations.calcBalance(records, Operations.getMinData(records),
-            Operations.getMaxData(records));
-    double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records),
-            Operations.getMaxData(records));
+    double balance = Math.round(Operations.calcBalance(records, Operations.getMinData(records),
+            Operations.getMaxData(records)) * 100) / 100.0;
+    double expenses = -1 * Math.round(Operations.calcExpensesPeriod(records, Operations.getMinData(records),
+            Operations.getMaxData(records)) * 100) / 100.0;
     double income = balance + expenses;
+    String financeColor = Colors.GREEN;
+    if (balance < 0) financeColor = Colors.RED;
     System.out.println(Colors.WHITE_BRIGHT + "BALANCE: " + Colors.RESET
-            + Colors.GREEN + balance + Colors.RESET
+            + financeColor + balance + Colors.RESET
             + Colors.WHITE + " Expenses: " + Colors.RESET
             + Colors.RED + expenses +Colors.RESET
             + Colors.WHITE + " Income: " + Colors.RESET

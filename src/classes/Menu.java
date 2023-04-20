@@ -81,7 +81,8 @@ public class Menu {
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 5-Date " + Colors.RESET
+          + "                        "
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
@@ -90,7 +91,8 @@ public class Menu {
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 5-Date " + Colors.RESET
+          + "                        "
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
@@ -98,7 +100,9 @@ public class Menu {
           + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "          + "                                "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 5-Date " + Colors.RESET
+          + "                        "
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
@@ -107,7 +111,8 @@ public class Menu {
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 5-Date " + Colors.RESET
+          + "                        "
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
@@ -116,10 +121,21 @@ public class Menu {
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 5-Date " + Colors.RESET
+      + "                        "
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
+  public static final String SHOW_ALL_MENU_DATA = ""
+      + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+      + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+      + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+      + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+      + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 5-Date " + Colors.RESET
+      + "                        "
+      + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+      +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+      +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
   public static final String SHOW_ALL_MENU_CHART_DATE = ""
 
@@ -162,9 +178,10 @@ public class Menu {
             Menu.delaySecond();
             Output.printList(Operations.sortByID(records));
             Output.printFinance(records);
-            Menu.recordsMenu(records,categories);
             System.out.println(SHOW_ALL_MENU_ID);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
+            Menu.recordsMenu(records,categories);
+
             break;
           }
           case "2": {
@@ -179,9 +196,9 @@ public class Menu {
             delaySecond();
             Output.printList(Operations.sortByUser(records));
             Output.printFinance(records);
-            Menu.recordsMenu(records, categories);
             System.out.println(SHOW_ALL_MENU_USER);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
+            Menu.recordsMenu(records, categories);
             break;
           }
           case "3": {
@@ -196,8 +213,10 @@ public class Menu {
             delaySecond();
             Output.printList(Operations.sortByCategory(records));
             Output.printFinance(records);
+
             System.out.println(SHOW_ALL_MENU_CATEGORY);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
+            Menu.recordsMenu(records, categories);
             break;
           }
           case "4": {
@@ -212,9 +231,10 @@ public class Menu {
             delaySecond();
             Output.printList(Operations.sortByAmount(records));
             Output.printFinance(records);
-            System.out.println(SHOW_ALL_MENU_CATEGORY);
+
             System.out.println(SHOW_ALL_MENU_AMOUNT);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
+            Menu.recordsMenu(records, categories);
             break;
           }
           case "5": {
@@ -229,9 +249,10 @@ public class Menu {
             delaySecond();
             Output.printList(Operations.sortByDate(records));
             Output.printFinance(records);
-            System.out.println(SHOW_ALL_MENU_CATEGORY);
+
             System.out.println(SHOW_ALL_MENU_AMOUNT);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
+            Menu.recordsMenu(records, categories);
             break;
           }
           case "6": {

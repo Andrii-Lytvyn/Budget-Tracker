@@ -57,3 +57,4 @@ src/res/sounds   | sound.wav     | Sound for main screen of Presentation
 ## USAGE
 
 To use the program, simply run the `main` method on the file `BudgetTracker` in main folder
+

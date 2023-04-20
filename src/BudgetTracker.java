@@ -1,4 +1,5 @@
 import classes.*;
+import classes.Menu;
 import classes.Record;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -26,15 +27,15 @@ public class BudgetTracker {
     Category.createCategories();
 
     Users.showLogin(loginFile);
-    Submenu.clearAll();
+    Menu.clearAll();
 
     IOCrypto.makeUnCrypt(crypto, records);
     IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
 
     System.out.println();
-    Submenu.delaySecond();
-    Submenu.printHeader();
-    Submenu.delaySecond();
+    Menu.delaySecond();
+    Menu.printHeader();
+    Menu.delaySecond();
     Output.printList(records);
     double balance = Operations.calcBalance(records, Operations.getMinData(records),
         Operations.getMaxData(records));
@@ -42,11 +43,8 @@ public class BudgetTracker {
         Operations.getMaxData(records));
     double income = balance + expenses;
     System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
-    System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
-    System.out.println(Submenu.SHOW_SYSTEM_MENU_MAIN);
-    Submenu.recordsMenu(records, categories);
-
-
-
+    System.out.println(Menu.SHOW_ALL_MENU_MAIN);
+    System.out.println(Menu.SHOW_SYSTEM_MENU_MAIN);
+    Menu.recordsMenu(records, categories);
   }
 }

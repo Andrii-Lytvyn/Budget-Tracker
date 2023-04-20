@@ -53,6 +53,6 @@ src/res          | login.txt     | List of Users
 src/res          | pass.txt      | List of Passwords
 src/res/sounds   | sound.wav     | Sound for main screen of Presentation
 
-## USAGE
+## USAGE 1
 
 To use the program, simply run the `main` method on the file `BudgetTracker` in main folder

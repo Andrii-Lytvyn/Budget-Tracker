@@ -31,9 +31,9 @@ public class Output {
    */
   public static void chartCategory(List<Record> records, List<Category> categories,
       Date dateBegin, Date dateEnd) {
-    System.out.println("--------------------------------------------------------------------------------------------------------------");
-    System.out.println("|    Category   |                                          Amount                                            |");
-    System.out.println("--------------------------------------------------------------------------------------------------------------");
+    System.out.println(Colors.WHITE_BRIGHT + "┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒");
+    System.out.println(Colors.WHITE_BRIGHT +"┃     DATE      ┃                                           AMOUNT                                          ┃");
+    System.out.println(Colors.WHITE_BRIGHT +"┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┸┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚"+Colors.RESET);
     double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (Category category : categories) {
       double categorySum = -1 * Operations.expensesByCategory(records, category.getTitle(),
@@ -58,18 +58,25 @@ public class Output {
    */
   public static void chartUser(List<Record> records, List<String> users,
       Date dateBegin, Date dateEnd) {
-    System.out.println("--------------------------------------------------------------------------------------------------------------");
-    System.out.println("|     User      |                                           Amount                                           |");
-    System.out.println("--------------------------------------------------------------------------------------------------------------");
+    String color = Colors.RESET;
+    System.out.println(Colors.WHITE_BRIGHT + "┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒");
+    System.out.println(Colors.WHITE_BRIGHT +"┃     DATE      ┃                                           AMOUNT                                          ┃");
+    System.out.println(Colors.WHITE_BRIGHT +"┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┸┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚"+Colors.RESET);
     double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (String user : users) {
       double userSum = -1 * Operations.expensesByUser(records, user,
           dateBegin, dateEnd); //expenses are negative
       double percent = userSum * 100 / totalEx;
-      System.out.print("| " + user + " |");
+      System.out.print(Colors.WHITE_BRIGHT + "┃      " + user + "     ┃" + Colors.RESET);
       for (int i = 0; i < percent; ++i) {
-        System.out.print("#");
+        if(percent < 10) color = Colors.YELLOW;
+        if(percent > 10) color = Colors.BLUE;
+        if(percent > 15) color = Colors.CYAN;
+        if(percent > 30) color = Colors.RED_BRIGHT;
+        System.out.print(color + "*");
+        color = Colors.RESET;
       }
+
       percent = Math.round(percent);
       System.out.println(" " + percent + "%");
     }

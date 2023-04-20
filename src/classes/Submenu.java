@@ -135,7 +135,7 @@ public class Submenu {
 
   public static final String SHOW_SUB_MENU_CHART = ""
           +"\n"
-          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 0 - <┈┈┘  " + Colors.RESET + " "  + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1 - Main menu " + Colors.RESET + " ";
+          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1 - Main menu <┈┈┘  " + Colors.RESET + " ";
 
     public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -211,7 +211,32 @@ public class Submenu {
             Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
-//            System.out.println(SHOW_ALL_MENU_CHART_DATE);
+            break;
+          }
+          case "6": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            delaySecond();
+            //Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
+            System.out.println(LEGEND);
+            System.out.println(SHOW_SUB_MENU_CHART);
+            break;
+          }
+          case "7": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            delaySecond();
+            Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
+            System.out.println(LEGEND);
+            System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
         }

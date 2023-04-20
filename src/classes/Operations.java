@@ -61,12 +61,26 @@ public class Operations {
    * @return Sum of expenses in this period
    */
   public static double calcExpensesPeriod(List<Record> records, Date dateBegin, Date dateEnd) {
-    return records.stream()
-        .filter(x -> x.getDate().after(dateBegin))
-        .filter(x -> x.getDate().before(dateEnd))
-        .filter(x -> x.getAmount() < 0)
-        .mapToDouble(Record::getAmount)
-        .sum();
+    double sum = 0.0;
+    System.out.println(dateBegin + " " + dateEnd);
+    for (Record x : records) {
+      if (x.getDate().after(dateBegin)) {
+        if (x.getDate().before(dateEnd)) {
+          if (x.getAmount() < 0) {
+            double amount = x.getAmount();
+            System.out.println(x.getId() + " " + x.getDate() + " " + amount);
+            sum += amount;
+          }
+        }
+      }
+    }
+    return sum;
+//    return records.stream()
+//        .filter(x -> x.getDate().after(dateBegin))
+//        .filter(x -> x.getDate().before(dateEnd))
+//        .filter(x -> x.getAmount() < 0)
+//        .mapToDouble(Record::getAmount)
+//        .sum();
   }
 
   /**
@@ -177,7 +191,7 @@ public class Operations {
   /**
    * Sort LIst of All Records by Date
    *
-   * @param records   List of Record with payments
+   * @param records List of Record with payments
    * @return new sorted LIst of Records
    */
   public static List<Record> sortByDate(List<Record> records) {
@@ -209,7 +223,7 @@ public class Operations {
   /**
    * Sort LIst of All Records by User
    *
-   * @param records   List of Record with payments
+   * @param records List of Record with payments
    * @return new sorted LIst of Records
    */
   public static List<Record> sortByUser(List<Record> records) {
@@ -241,7 +255,7 @@ public class Operations {
   /**
    * Sort LIst of All Records by Category
    *
-   * @param records   List of Record with payments
+   * @param records List of Record with payments
    * @return new sorted LIst of Records
    */
   public static List<Record> sortByCategory(List<Record> records) {
@@ -273,7 +287,7 @@ public class Operations {
   /**
    * Sort LIst of All Records by Amount
    *
-   * @param records   List of Record with payments
+   * @param records List of Record with payments
    * @return new sorted LIst of Records
    */
   public static List<Record> sortByAmount(List<Record> records) {
@@ -291,12 +305,9 @@ public class Operations {
    * @param dateEnd   End of payments period exclusive
    * @return List of dates
    */
-  public static List<Date> datesBetween(Date dateBegin, Date dateEnd){
+  public static List<Date> datesBetween(Date dateBegin, Date dateEnd) {
     List<Date> dates = new ArrayList<>();
     Calendar calendar = new GregorianCalendar();
-    calendar.setTime(dateEnd);
-    calendar.add(Calendar.DATE, 1);
-    dateEnd = calendar.getTime();
     // setup calendar for dateBegin
     calendar.setTime(dateBegin);
     // fill List of dates one by one
@@ -306,33 +317,42 @@ public class Operations {
       dates.add(result); // add to list of dates current date
       calendar.add(Calendar.DATE, 1); // move day in calendar one dey front
     }
-
     return dates;
   }
 
   /**
    * get Minimum date in records
    *
-   * @param records  List of Record with payments
+   * @param records List of Record with payments
    * @return Minimum date from List of records
    */
-  public static Date getMinData(List<Record> records){
-    return records.stream()
+  public static Date getMinData(List<Record> records) {
+    Date minDate = records.stream()
         .map(Record::getDate)
         .min(Date::compareTo)
         .get();
+    Calendar calendar = new GregorianCalendar();
+    calendar.setTime(minDate);
+    calendar.add(Calendar.DATE, -1);
+    minDate = calendar.getTime();
+    return minDate;
   }
 
   /**
    * get Maximum date in records
    *
-   * @param records  List of Record with payments
+   * @param records List of Record with payments
    * @return Maximum date from List of records
    */
-  public static Date getMaxData(List<Record> records){
-    return records.stream()
+  public static Date getMaxData(List<Record> records) {
+    Date maxDate = records.stream()
         .map(Record::getDate)
         .max(Date::compareTo)
         .get();
+    Calendar calendar = new GregorianCalendar();
+    calendar.setTime(maxDate);
+    calendar.add(Calendar.DATE, 1);
+    maxDate = calendar.getTime();
+    return maxDate;
   }
 }

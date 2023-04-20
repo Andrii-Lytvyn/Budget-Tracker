@@ -69,5 +69,7 @@ public class BudgetTracker {
     Output.printList(records);
     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
     Submenu.recordsMenu(records, categories);
+
+
   }
 }

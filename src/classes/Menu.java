@@ -284,6 +284,7 @@ public class Menu {
             Output.printFinance(records);
 
             System.out.println(LEGEND);
+            System.out.println(SHOW_ALL_MENU_CHART_CATEGORY);
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
@@ -300,6 +301,7 @@ public class Menu {
             Output.printFinance(records);
 
             System.out.println(LEGEND);
+            System.out.println(SHOW_ALL_MENU_CHART_USER);
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
@@ -345,9 +347,11 @@ public class Menu {
             Menu.delaySecond();
             editRecord(records, categories);
             clearAll();
+            Menu.delaySecond();
             Menu.printHeader();
             Menu.delaySecond();
             Output.printList(records);
+            Output.printFinance(records);
             System.out.println(Menu.SHOW_ALL_MENU_MAIN);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records, categories);
@@ -363,9 +367,11 @@ public class Menu {
             delaySecond();
             addRecord(records, categories);
             clearAll();
+            Menu.delaySecond();
             Menu.printHeader();
             Menu.delaySecond();
             Output.printList(records);
+            Output.printFinance(records);
             System.out.println(Menu.SHOW_ALL_MENU_MAIN);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records, categories);
@@ -385,18 +391,20 @@ public class Menu {
             Menu.printHeader();
             Menu.delaySecond();
             Output.printList(records);
+            Output.printFinance(records);
             System.out.println(Menu.SHOW_ALL_MENU_MAIN);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records, categories);
             break;
           }
-          case "x": {
+          case "s": {
             File file = new File("src/classes/1.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
             clearAll();
+            delaySecond();
             System.out.println("ПОСЛЕДНИЙ СЛАЙД НА ПРОЩЕНИЕ");
             break;
           }
@@ -508,13 +516,13 @@ public class Menu {
         income = true;
       }
     }
-    System.out.print("Want you change comment? [y/n] ");
+    System.out.print("Do you want change comment? [y/n] ");
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
       System.out.print(Colors.BLUE + "Input comment:     ");
       comment = br.readLine();
     }
-    System.out.print("Want you change Category? [y/n] ");
+    System.out.print("Do you want change Category? [y/n] ");
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
       for (int i = 0; i < categories.size(); ++i) {
@@ -524,7 +532,7 @@ public class Menu {
       int cat = Integer.parseInt(br.readLine());
       categoryName = categories.get(cat).getTitle();//get category by number and get title
     }
-    System.out.print("Want you change AMOUNT? [y/n] ");
+    System.out.print("Do you want change AMOUNT? [y/n] ");
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
       System.out.print("Input amount:      ");

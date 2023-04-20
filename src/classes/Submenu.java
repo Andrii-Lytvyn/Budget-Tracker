@@ -58,6 +58,24 @@ public class Submenu {
           + "\n"
 
           ;
+
+  public static final String SHOW_SYSTEM_MENU_MAIN = ""
+          + "\n\n"
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " e - Edit " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " a - Add " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " d - Delete " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " q - Exit " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SURPRISE " + Colors.RESET + " "
+          ;
+  public static final String SHOW_SYSTEM_MENU = ""
+          + "\n\n"
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " r - Return " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " e - Edit " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " a - Add " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " d - Delete " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " q - Exit " + Colors.RESET + " "
+          + Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SURPRISE " + Colors.RESET + " "
+          ;
   public static final String SHOW_ALL_MENU_MAIN = ""
           + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
@@ -143,8 +161,8 @@ public class Submenu {
             Submenu.printHeader();
             Submenu.delaySecond();
             Output.printList(Operations.sortByID(records));
-            Submenu.recordsMenu(records,categories);
             System.out.println(SHOW_ALL_MENU_ID);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
           }
           case "2": {
@@ -156,10 +174,10 @@ public class Submenu {
             clearAll();
             delaySecond();
             Submenu.printHeader();
-            Submenu.delaySecond();
+            delaySecond();
             Output.printList(Operations.sortByUser(records));
-            Submenu.recordsMenu(records, categories);
             System.out.println(SHOW_ALL_MENU_USER);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
           }
           case "3": {
@@ -170,8 +188,11 @@ public class Submenu {
             clip.start();
             clearAll();
             delaySecond();
+            Submenu.printHeader();
+            delaySecond();
             Output.printList(Operations.sortByCategory(records));
             System.out.println(SHOW_ALL_MENU_CATEGORY);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
           }
           case "4": {
@@ -182,8 +203,11 @@ public class Submenu {
             clip.start();
             clearAll();
             delaySecond();
-            System.out.println(SHOW_ALL_MENU_AMOUNT);
+            Submenu.printHeader();
+            delaySecond();
             Output.printList(Operations.sortByAmount(records));
+            System.out.println(SHOW_ALL_MENU_AMOUNT);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
           }
           case "5": {
@@ -281,6 +305,7 @@ public class Submenu {
             clip.open(audioStream);
             clip.start();
             clearAll();
+            delaySecond();
             addRecord(records, categories);
             clearAll();
             Submenu.printHeader();
@@ -304,6 +329,16 @@ public class Submenu {
             Output.printList(records);
             System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
             Submenu.recordsMenu(records, categories);
+            break;
+          }
+          case "x": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            System.out.println("ПОСЛЕДНИЙ СЛАЙД НА ПРОЩЕНИЕ");
             break;
           }
         }

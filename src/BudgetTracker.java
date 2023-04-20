@@ -62,12 +62,13 @@ public class BudgetTracker {
 //    Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
 
     System.out.println();
-    System.out.println(Users.getUserName());
     Submenu.delaySecond();
     Submenu.printHeader();
     Submenu.delaySecond();
     Output.printList(records);
     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+    System.out.println(Submenu.SHOW_SYSTEM_MENU_MAIN);
     Submenu.recordsMenu(records, categories);
+
   }
 }

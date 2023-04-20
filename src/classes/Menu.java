@@ -328,14 +328,8 @@ public class Menu {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
-            return;
-//            clearAll();
-//            Submenu.printHeader();
-//            Submenu.delaySecond();
-//            Output.printList(records);
-//            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
-//            Submenu.recordsMenu(records, categories);
-//            break;
+            System.exit(0);
+            break;
           }
           case "e": {
             File file = new File("src/classes/1.wav");
@@ -436,7 +430,6 @@ public class Menu {
     int id = Record.getNewRecordId(records);
 
     System.out.println(Colors.BLUE + "Task ID:         " + id);
-    // TODO - make method getUserName()
     System.out.printf(Colors.BLUE + "User:          %s%n", Users.getUserName());
     System.out.print(Colors.BLUE + "Is this income or expenses (i/e):     ");
     String incomeOrExpenses = br.readLine();

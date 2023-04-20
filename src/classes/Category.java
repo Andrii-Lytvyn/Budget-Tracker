@@ -9,31 +9,11 @@ public class Category {
   private String title;
   private boolean allowed;
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public void setAllowed(boolean allowed) {
-    this.allowed = allowed;
-  }
-
-  public int getId() {
-    return id;
-  }
-
   public String getTitle() {
     return title;
   }
 
-  public boolean isAllowed() {
-    return allowed;
-  }
-
-  public Category() {
+    public Category() {
   }
 
   public Category(int id, String title, boolean allowed) {
@@ -44,7 +24,7 @@ public class Category {
 
   public static List<Category> categories = new ArrayList<>();
 
-  public static List createCategories() {
+  public static List<Category> createCategories() {
 
     Category c0 = new Category(0, "Food", false);
     categories.add(c0);

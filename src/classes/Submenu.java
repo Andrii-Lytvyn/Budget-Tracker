@@ -249,13 +249,14 @@ public class Submenu {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
-            clearAll();
-            Submenu.printHeader();
-            Submenu.delaySecond();
-            Output.printList(records);
-            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
-            Submenu.recordsMenu(records, categories);
-            break;
+            return;
+//            clearAll();
+//            Submenu.printHeader();
+//            Submenu.delaySecond();
+//            Output.printList(records);
+//            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+//            Submenu.recordsMenu(records, categories);
+//            break;
           }
           case "e": {
             File file = new File("src/classes/1.wav");

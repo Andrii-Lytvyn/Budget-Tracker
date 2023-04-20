@@ -16,7 +16,7 @@ public class BudgetTracker {
 
   public static void main(String[] args) throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
     //File budgetFile = new File("src/res/budget.txt");
-    // IOCrypto.parseFileUnencrypted(budgetFile, records);
+    //IOCrypto.parseFileUnencrypted(budgetFile, records);
     File loginFile = new File("src/res/login.txt");
     File crypto = new File("src/res/crypto.txt");
 

@@ -42,10 +42,11 @@ public class IOCrypto {
    * @throws IOException throw.
    */
   public static void makeUnCrypt(File cryptoFile, List<Record> records) throws IOException, ParseException {
-    BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
-    if (cryptoFile.length() == 0) {
+       if (cryptoFile.length() == 0) {
       System.out.println("Empty file");
     } else {
+         try{
+      BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
       for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
         StringBuilder tempString = new StringBuilder();
         for (int i = 0; i < row.length(); i++) {
@@ -55,6 +56,20 @@ public class IOCrypto {
         parseRecordFromString(tempString.toString(), records);
       }
       inputFileReader.close();
+      }catch (FileNotFoundException f)
+         {
+           cryptoFile = new File("src/res/crypto.txt");
+           BufferedReader inputFileReader = new BufferedReader(new FileReader(cryptoFile));
+           for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
+             StringBuilder tempString = new StringBuilder();
+             for (int i = 0; i < row.length(); i++) {
+               int code = (int) row.charAt(i) - CRYPTO;
+               tempString.append((char) code);
+             }
+             parseRecordFromString(tempString.toString(), records);
+           }
+           inputFileReader.close();
+         }
     }
   }
 

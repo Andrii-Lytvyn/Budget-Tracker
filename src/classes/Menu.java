@@ -161,10 +161,7 @@ public class Menu {
             Menu.printHeader();
             Menu.delaySecond();
             Output.printList(Operations.sortByID(records));
-            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double income = balance + expenses;
-            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+            Output.printFinance(records);
             Menu.recordsMenu(records,categories);
             System.out.println(SHOW_ALL_MENU_ID);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
@@ -181,10 +178,7 @@ public class Menu {
             Menu.printHeader();
             delaySecond();
             Output.printList(Operations.sortByUser(records));
-            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double income = balance + expenses;
-            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+            Output.printFinance(records);
             Menu.recordsMenu(records, categories);
             System.out.println(SHOW_ALL_MENU_USER);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
@@ -201,10 +195,7 @@ public class Menu {
             Menu.printHeader();
             delaySecond();
             Output.printList(Operations.sortByCategory(records));
-            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double income = balance + expenses;
-            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+            Output.printFinance(records);
             System.out.println(SHOW_ALL_MENU_CATEGORY);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
@@ -220,10 +211,7 @@ public class Menu {
             Menu.printHeader();
             delaySecond();
             Output.printList(Operations.sortByAmount(records));
-            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
-            double income = balance + expenses;
-            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+            Output.printFinance(records);
             System.out.println(SHOW_ALL_MENU_CATEGORY);
             System.out.println(SHOW_ALL_MENU_AMOUNT);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);

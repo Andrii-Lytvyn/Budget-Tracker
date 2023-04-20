@@ -62,9 +62,9 @@ public class Category {
     categories.add(c6);
     Category c7 = new Category(7, "Hobby", false);
     categories.add(c7);
-    Category c8 = new Category(7, "Vacations", false);
+    Category c8 = new Category(8, "Vacations", false);
     categories.add(c8);
-    Category c9 = new Category(7, "Medicine", false);
+    Category c9 = new Category(9, "Medicine", false);
     categories.add(c9);
   return categories;
   }

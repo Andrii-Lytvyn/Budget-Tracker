@@ -181,7 +181,6 @@ public class Menu {
             System.out.println(SHOW_ALL_MENU_ID);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records,categories);
-
             break;
           }
           case "2": {
@@ -315,7 +314,9 @@ public class Menu {
             Menu.printHeader();
             Menu.delaySecond();
             Output.printList(records);
+            Output.printFinance(records);
             System.out.println(Menu.SHOW_ALL_MENU_MAIN);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records, categories);
             break;
           }
@@ -341,12 +342,14 @@ public class Menu {
             clip.open(audioStream);
             clip.start();
             clearAll();
+            Menu.delaySecond();
             editRecord(records, categories);
             clearAll();
             Menu.printHeader();
             Menu.delaySecond();
             Output.printList(records);
             System.out.println(Menu.SHOW_ALL_MENU_MAIN);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records, categories);
             break;
           }
@@ -364,6 +367,7 @@ public class Menu {
             Menu.delaySecond();
             Output.printList(records);
             System.out.println(Menu.SHOW_ALL_MENU_MAIN);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records, categories);
             break;
           }
@@ -374,12 +378,15 @@ public class Menu {
             clip.open(audioStream);
             clip.start();
             clearAll();
+            delaySecond();
             deleteRecord(records);
             clearAll();
+            delaySecond();
             Menu.printHeader();
             Menu.delaySecond();
             Output.printList(records);
             System.out.println(Menu.SHOW_ALL_MENU_MAIN);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
             Menu.recordsMenu(records, categories);
             break;
           }
@@ -449,10 +456,10 @@ public class Menu {
     System.out.println();
     System.out.print(Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SAVE " +
         Colors.RESET + " " + Colors.WHITE_BACKGROUND_BRIGHT +
-        Colors.BLACK_BOLD + " e-EXIT: " + Colors.RESET);
+        Colors.BLACK_BOLD + " r-RETURN: " + Colors.RESET);
     while (true) {
       String command = br.readLine();
-      if (command.equalsIgnoreCase("e")) {
+      if (command.equalsIgnoreCase("r")) {
         return;
       } else if (command.equalsIgnoreCase("s")) {
         record.setId(id);
@@ -483,7 +490,7 @@ public class Menu {
   public static void editRecord(List<Record> records, List<Category> categories)
       throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    System.out.print("Input ID of record to delete: ");
+    System.out.print("Input ID of record: ");
     boolean income = false;
     double amount = 0;
     int multiply = 1;
@@ -491,6 +498,7 @@ public class Menu {
     String categoryName = "";
 
     int id = Integer.parseInt(br.readLine());
+
     System.out.print("Want you change INCOME/EXPENSES? [y/n] ");
     String input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
@@ -506,7 +514,7 @@ public class Menu {
       System.out.print(Colors.BLUE + "Input comment:     ");
       comment = br.readLine();
     }
-    System.out.print("Want you change comment? [y/n] ");
+    System.out.print("Want you change Category? [y/n] ");
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
       for (int i = 0; i < categories.size(); ++i) {
@@ -525,10 +533,10 @@ public class Menu {
     System.out.println();
     System.out.print(Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SAVE " +
         Colors.RESET + " " + Colors.WHITE_BACKGROUND_BRIGHT +
-        Colors.BLACK_BOLD + " e-EXIT: " + Colors.RESET);
+        Colors.BLACK_BOLD + " r-RETURN: " + Colors.RESET);
     while (true) {
       String command = br.readLine();
-      if (command.equalsIgnoreCase("e")) {
+      if (command.equalsIgnoreCase("r")) {
         return;
       } else if (command.equalsIgnoreCase("s")) {
         for (Record record : records) {

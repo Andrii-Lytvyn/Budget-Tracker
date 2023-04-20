@@ -225,6 +225,23 @@ public class Menu {
             clip.start();
             clearAll();
             delaySecond();
+            Menu.printHeader();
+            delaySecond();
+            Output.printList(Operations.sortByDate(records));
+            Output.printFinance(records);
+            System.out.println(SHOW_ALL_MENU_CATEGORY);
+            System.out.println(SHOW_ALL_MENU_AMOUNT);
+            System.out.println(SHOW_SYSTEM_MENU_MAIN);
+            break;
+          }
+          case "6": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            delaySecond();
             Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
 
             System.out.println("Balance: " + Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
@@ -234,7 +251,7 @@ public class Menu {
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
-          case "6": {
+          case "7": {
             File file = new File("src/classes/1.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
@@ -250,7 +267,7 @@ public class Menu {
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
-          case "7": {
+          case "8": {
             File file = new File("src/classes/1.wav");
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();

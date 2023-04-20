@@ -104,31 +104,19 @@ public class Submenu {
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
   public static final String SHOW_ALL_MENU_CHART_DATE = ""
-          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
     public static final String SHOW_ALL_MENU_CHART_CATEGORY = ""
-          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
   public static final String SHOW_ALL_MENU_CHART_USER = ""
-          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
@@ -137,7 +125,7 @@ public class Submenu {
           +"\n"
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1 - Main menu <┈┈┘  " + Colors.RESET + " ";
 
-    public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
+    public static void recordsMenu(List<Record> records, List<Category> categories)  throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       while (true) {
         System.out.println();
@@ -154,10 +142,9 @@ public class Submenu {
             delaySecond();
             Submenu.printHeader();
             Submenu.delaySecond();
-            Output.printList(records);
-            System.out.println(SHOW_ALL_MENU_ID);
             Output.printList(Operations.sortByID(records));
-            Submenu.recordsMenu(records);
+            Submenu.recordsMenu(records,categories);
+            System.out.println(SHOW_ALL_MENU_ID);
             break;
           }
           case "2": {
@@ -170,10 +157,9 @@ public class Submenu {
             delaySecond();
             Submenu.printHeader();
             Submenu.delaySecond();
-            Output.printList(records);
-            System.out.println(SHOW_ALL_MENU_USER);
             Output.printList(Operations.sortByUser(records));
-            Submenu.recordsMenu(records);
+            Submenu.recordsMenu(records, categories);
+            System.out.println(SHOW_ALL_MENU_USER);
             break;
           }
           case "3": {
@@ -184,8 +170,8 @@ public class Submenu {
             clip.start();
             clearAll();
             delaySecond();
-            System.out.println(SHOW_ALL_MENU_CATEGORY);
             Output.printList(Operations.sortByCategory(records));
+            System.out.println(SHOW_ALL_MENU_CATEGORY);
             break;
           }
           case "4": {
@@ -210,6 +196,7 @@ public class Submenu {
             delaySecond();
             Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
             System.out.println(LEGEND);
+            System.out.println(SHOW_ALL_MENU_CHART_DATE);
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
@@ -221,7 +208,7 @@ public class Submenu {
             clip.start();
             clearAll();
             delaySecond();
-            //Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
+            Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
@@ -235,104 +222,94 @@ public class Submenu {
             clearAll();
             delaySecond();
             Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
+            System.out.println(Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
+            break;
+          }
+          case "r": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            Submenu.delaySecond();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
+            break;
+          }
+          case "q": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            return;
+//            clearAll();
+//            Submenu.printHeader();
+//            Submenu.delaySecond();
+//            Output.printList(records);
+//            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+//            Submenu.recordsMenu(records, categories);
+//            break;
+          }
+          case "e": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            editRecord(records, categories);
+            clearAll();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
+            break;
+          }
+          case "a": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            addRecord(records, categories);
+            clearAll();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
+            break;
+          }
+          case "d": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            deleteRecord(records);
+            clearAll();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
             break;
           }
         }
       }
     }
-                /*
-                case "5": {
-                    Comparator<Task> comparator = new TaskByDifficultComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "6": {
-                    Comparator<Task> comparator = new TaskByStatusComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "7": {
-                    Comparator<Task> comparator = new TaskByStartDateComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "8": {
-                    Comparator<Task> comparator = new TaskByFinishDateComparator();
-                    tasks.sort(comparator);
-                    refresh(tasks);
-                    break;
-                }
-                case "9": {
-                    Comparator<Task> comparator1 = new TaskByIdComparator();
-                    tasks.sort(comparator1);
-                    refresh(tasks);
-                    break;
-                }
-                case "c": {
-                    changeUser(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "a": {
-                    addTask(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "d": {
-                    deleteTask(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "f": {
-                    finishTask(tasks);
-                    refresh(tasks);
-                    break;
-                }
-                case "r": {
-                    System.out.println();
-                    System.out.print(ConsoleColors.BLUE_BOLD + "Input task ID to READ: " + ConsoleColors.RESET);
-                    int id = Integer.parseInt(br.readLine());
-                    if (checkIdInRange(tasks, id)) {
-                        readTask(tasks, id);
-                    }
-                    refresh(tasks);
-                    break;
-                }
-                case "g": {
-//          refresh(tasks);
-                    if (Task.getGeneral()) {
-                        Gant gant = new Gant();
-                        gant.printHead();
-//            tasks.sort(new TaskByIdComparator());
-                        for (Task task : tasks) {
-                            gant.printTask(task);
-                        }
-                        gant.printLine();
-                        System.out.println();
-                        System.out.println("Q - Quit");
-                        while (true) {
-                            String quit = br.readLine();
-                            if (quit != "") {
-                                break;
-                            }
-                        }
-                    }
-                    refresh(tasks);
-                }
-                case "q": {
-                    task.makeOutputFile(tasks);
-                    System.exit(0);
 
-                }
-            }
-        }
-    }
-*/
 
   /**
    * Add new record to List of records

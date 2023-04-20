@@ -55,6 +55,8 @@ public class BudgetTracker {
     Output.printList(records);
     //Operations.datesBetween(Operations.getMinData(records), Operations.getMaxData(records));
     //Submenu.addRecord(records, categories);
-    //Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
+    Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
+    Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
+    Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
   }
 }

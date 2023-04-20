@@ -61,26 +61,12 @@ public class Operations {
    * @return Sum of expenses in this period
    */
   public static double calcExpensesPeriod(List<Record> records, Date dateBegin, Date dateEnd) {
-    double sum = 0.0;
-    System.out.println(dateBegin + " " + dateEnd);
-    for (Record x : records) {
-      if (x.getDate().after(dateBegin)) {
-        if (x.getDate().before(dateEnd)) {
-          if (x.getAmount() < 0) {
-            double amount = x.getAmount();
-            System.out.println(x.getId() + " " + x.getDate() + " " + amount);
-            sum += amount;
-          }
-        }
-      }
-    }
-    return sum;
-//    return records.stream()
-//        .filter(x -> x.getDate().after(dateBegin))
-//        .filter(x -> x.getDate().before(dateEnd))
-//        .filter(x -> x.getAmount() < 0)
-//        .mapToDouble(Record::getAmount)
-//        .sum();
+    return records.stream()
+        .filter(x -> x.getDate().after(dateBegin))
+        .filter(x -> x.getDate().before(dateEnd))
+        .filter(x -> x.getAmount() < 0)
+        .mapToDouble(Record::getAmount)
+        .sum();
   }
 
   /**

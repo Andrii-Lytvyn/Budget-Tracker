@@ -24,7 +24,6 @@ public class BudgetTracker {
     File loginFile = new File("src/res/login.txt");
     File crypto = new File("src/res/crypto.txt");
 
-    Category.createCategories();
 
     Users.showLogin(loginFile);
     Menu.clearAll();

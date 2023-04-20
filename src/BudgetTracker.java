@@ -12,18 +12,14 @@ public class BudgetTracker {
   public static List<Record> records = new ArrayList<>();
   public static List<Category> categories = new ArrayList<>();
 
-  public static void main(String[] args) throws IOException, ParseException {
+  public static void main(String[] args) throws IOException, ParseException, AWTException {
     //File budgetFile = new File("src/res/budget.txt");
     // IOCrypto.parseFileUnencrypted(budgetFile, records);
     File loginFile = new File("src/res/login.txt");
     File crypto = new File("src/res/crypto.txt");
 
-    Users.showLogin(loginFile);
-    System.out.println(Users.getUserName());
-     Users.showLogin(loginFile);
-     Submenu.printHeader();
-     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
-     Submenu.recordsMenu(records);
+
+
 
 
     Category c0 = new Category(0, "Food", false);
@@ -49,14 +45,27 @@ public class BudgetTracker {
 //    Submenu.addRecord(records, categories);
 
    // Users.getLoginFromFile(loginFile);
+    Users.showLogin(loginFile);
+    Submenu.clearAll();
 
     IOCrypto.makeUnCrypt(crypto, records);
     IOCrypto.makeNewOutputCryptoFile(records, IOCrypto.list);
-    Output.printList(records);
+
+
     //Operations.datesBetween(Operations.getMinData(records), Operations.getMaxData(records));
     //Submenu.addRecord(records, categories);
-    Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
-    Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
-    Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
+
+//    Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
+//    Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
+//    Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
+
+    System.out.println();
+    System.out.println(Users.getUserName());
+    Submenu.delaySecond();
+    Submenu.printHeader();
+    Submenu.delaySecond();
+    Output.printList(records);
+    System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+    System.out.println(Submenu.SHOW_SUB_MENU_CHART);
   }
 }

@@ -13,9 +13,9 @@ import java.util.List;
 
 public class Submenu {
 
-  public static final String LINEOPEN = "╔======╦========================╦=========================╦======================╦========================╦==================================╗";
-  public static final String HEADER = "║  ID  ║     Data               ║    Category             ║    User              ║    Amount              ║        Comments                  ║";
-  public static final String LINECLOSE = "╚======╩========================╩=========================╩======================╩========================╩==================================╝";
+  public static final String LINEOPEN = "┌┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒";
+  public static final String HEADER = "│  ID  │          DATA          │         CATEGORY        │         USER         │         AMOUNT         │             COMMENTS             │";
+  public static final String LINECLOSE = "┠┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┤";
 
   public static void printHeader() {
     System.out.println(Colors.WHITE_BOLD_BRIGHT + LINEOPEN + Colors.RESET);
@@ -48,30 +48,82 @@ public class Submenu {
 
 
   public static final String SHOW_ALL_MENU_MAIN = ""
-          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
   public static final String SHOW_ALL_MENU_ID = ""
-          + Colors.YELLOW + "|SORT BY:         " + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
   public static final String SHOW_ALL_MENU_USER = ""
-          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
   public static final String SHOW_ALL_MENU_CATEGORY = ""
-          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
   public static final String SHOW_ALL_MENU_AMOUNT = ""
-          + Colors.YELLOW + "|SORT BY:         " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " ";
+          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
+
+  public static final String SHOW_ALL_MENU_CHART_DATE = ""
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
+
+    public static final String SHOW_ALL_MENU_CHART_CATEGORY = ""
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
+
+  public static final String SHOW_ALL_MENU_CHART_USER = ""
+          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
+          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
+          + "                                "
+          + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
+          +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
+
+  public static final String SHOW_SUB_MENU_CHART = ""
+          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + "  <┈┈┘  " + Colors.RESET + " "  + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " Main menu " + Colors.RESET + " ";
 
     public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -80,7 +132,7 @@ public class Submenu {
         System.out.print(Colors.GRAY + "Choose command: " + Colors.RESET);
         String key = br.readLine();
         switch (key) {
-          case "1": { // sort by ID
+          case "1": {
             clearAll();
             delaySecond();
             System.out.println(SHOW_ALL_MENU_ID);

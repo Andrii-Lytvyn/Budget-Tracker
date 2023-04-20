@@ -68,6 +68,6 @@ public class BudgetTracker {
     Submenu.delaySecond();
     Output.printList(records);
     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
-    Submenu.recordsMenu(records);
+    Submenu.recordsMenu(records, categories);
   }
 }

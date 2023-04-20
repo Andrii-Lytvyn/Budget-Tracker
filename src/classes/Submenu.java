@@ -104,31 +104,19 @@ public class Submenu {
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
   public static final String SHOW_ALL_MENU_CHART_DATE = ""
-          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
     public static final String SHOW_ALL_MENU_CHART_CATEGORY = ""
-          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
   public static final String SHOW_ALL_MENU_CHART_USER = ""
-          + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 3-Category " + Colors.RESET + " "
-          + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 4-Amount " + Colors.RESET + " "
-          + "                                "
+
           + Colors.GREEN_BRIGHT + "CHART BY:     "     +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  5 - Date  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.GREEN_BACKGROUND + "  6 - Category  " + Colors.RESET + " "
           +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
@@ -137,7 +125,7 @@ public class Submenu {
           +"\n"
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1 - Main menu <┈┈┘  " + Colors.RESET + " ";
 
-    public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
+    public static void recordsMenu(List<Record> records, List<Category> categories)  throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       while (true) {
         System.out.println();
@@ -154,10 +142,9 @@ public class Submenu {
             delaySecond();
             Submenu.printHeader();
             Submenu.delaySecond();
-            Output.printList(records);
-            System.out.println(SHOW_ALL_MENU_ID);
             Output.printList(Operations.sortByID(records));
-            Submenu.recordsMenu(records);
+            Submenu.recordsMenu(records,categories);
+            System.out.println(SHOW_ALL_MENU_ID);
             break;
           }
           case "2": {
@@ -170,10 +157,9 @@ public class Submenu {
             delaySecond();
             Submenu.printHeader();
             Submenu.delaySecond();
-            Output.printList(records);
-            System.out.println(SHOW_ALL_MENU_USER);
             Output.printList(Operations.sortByUser(records));
-            Submenu.recordsMenu(records);
+            Submenu.recordsMenu(records, categories);
+            System.out.println(SHOW_ALL_MENU_USER);
             break;
           }
           case "3": {
@@ -184,8 +170,8 @@ public class Submenu {
             clip.start();
             clearAll();
             delaySecond();
-            System.out.println(SHOW_ALL_MENU_CATEGORY);
             Output.printList(Operations.sortByCategory(records));
+            System.out.println(SHOW_ALL_MENU_CATEGORY);
             break;
           }
           case "4": {
@@ -210,6 +196,7 @@ public class Submenu {
             delaySecond();
             Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
             System.out.println(LEGEND);
+            System.out.println(SHOW_ALL_MENU_CHART_DATE);
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
           }
@@ -221,7 +208,7 @@ public class Submenu {
             clip.start();
             clearAll();
             delaySecond();
-            //Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
+            Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
@@ -235,8 +222,39 @@ public class Submenu {
             clearAll();
             delaySecond();
             Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
+            System.out.println(Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
+            break;
+          }
+          case "e": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            Submenu.delaySecond();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
+            break;
+          }
+          case "q": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
+            System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
+            Submenu.recordsMenu(records, categories);
             break;
           }
         }

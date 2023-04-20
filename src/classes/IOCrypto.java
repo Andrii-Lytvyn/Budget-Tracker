@@ -7,14 +7,14 @@ import java.util.List;
 
 public class IOCrypto {
 
-  final static int CRYPTO = 0;
+  final static int CRYPTO = -211;
   final public static String SEP = ",";
   public static List<String> list = new ArrayList<>();
 
   /**
    * Overwrites List of Records character-by-character by changing number ASCII -> (code)+CRYPTO
    *
-   * @param records List<Record> for crypt.
+   * @param records ListRecord for crypt.
    */
   public static void makeCrypto(List<Record> records) {
     list.clear();
@@ -33,7 +33,7 @@ public class IOCrypto {
   }
 
   /**
-   * Methods decrypt file, parse it and add records to List<Record>.
+   * Methods decrypt file, parse it and add records to ListRecord.
    * Use methods parseRecordFromString().
    * <p>
    * Check empty file.
@@ -73,7 +73,7 @@ public class IOCrypto {
   }
 
   /**
-   * Parse and add record from String to List<Record>.
+   * Parse and add record from String to List Record.
    *
    * @param line    String from file.
    * @param records records for adding.

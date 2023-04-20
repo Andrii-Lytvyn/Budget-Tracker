@@ -50,6 +50,8 @@ public class Users {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedReader inputFileReader = new BufferedReader(new FileReader(usersFile));
     Map<String, String> users = new HashMap<>();
+
+
     for (String row = inputFileReader.readLine(); row != null; row = inputFileReader.readLine()) {
       String[] temp = row.split(IOCrypto.SEP);
       users.put(temp[0], temp[1]);
@@ -73,7 +75,7 @@ public class Users {
         showLogin(usersFile);
       }
     } catch (NullPointerException e) {
-      System.err.println("User is not detected.");
+      System.out.println("User is not detected.");
       showLogin(usersFile);
     }
   }

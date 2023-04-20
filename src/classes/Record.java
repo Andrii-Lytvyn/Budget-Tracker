@@ -78,6 +78,10 @@ public class Record {
     return max;
   }
 
+  /**
+   * Override method to String
+   * @return string
+   */
   @Override
   public String toString() {
     return "Record{" +

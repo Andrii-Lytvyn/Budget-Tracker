@@ -1,9 +1,11 @@
 package classes;
 
 
+import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.*;
@@ -46,7 +48,16 @@ public class Submenu {
     r.keyRelease(KeyEvent.VK_Q);
   }
 
+  public static final String LEGEND = ""
+          +"\n"
+          + Colors.GREEN_BRIGHT + "LEGEND:      "
+          + Colors.YELLOW + " 0 < 10% " + Colors.RESET + " | "
+          + Colors.BLUE + "11 < 20% " + Colors.RESET + " | "
+          + Colors.CYAN + "21 < 30% " + Colors.RESET + " | "
+          + Colors.RED + " > 30% " + Colors.RESET + " | "
+          + "\n"
 
+          ;
   public static final String SHOW_ALL_MENU_MAIN = ""
           + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
           + Colors.YELLOW_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 2-User " + Colors.RESET + " "
@@ -123,9 +134,10 @@ public class Submenu {
           +   Colors.WHITE_BOLD_BRIGHT + Colors.BLUE_BACKGROUND + "  7 - User  " + Colors.RESET + " ";
 
   public static final String SHOW_SUB_MENU_CHART = ""
-          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + "  <┈┈┘  " + Colors.RESET + " "  + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " Main menu " + Colors.RESET + " ";
+          +"\n"
+          + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 0 - <┈┈┘  " + Colors.RESET + " "  + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1 - Main menu " + Colors.RESET + " ";
 
-    public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException {
+    public static void recordsMenu(List<Record> records) throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       while (true) {
         System.out.println();
@@ -133,20 +145,43 @@ public class Submenu {
         String key = br.readLine();
         switch (key) {
           case "1": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
             clearAll();
             delaySecond();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
             System.out.println(SHOW_ALL_MENU_ID);
             Output.printList(Operations.sortByID(records));
+            Submenu.recordsMenu(records);
             break;
           }
           case "2": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
             clearAll();
             delaySecond();
+            Submenu.printHeader();
+            Submenu.delaySecond();
+            Output.printList(records);
             System.out.println(SHOW_ALL_MENU_USER);
             Output.printList(Operations.sortByUser(records));
+            Submenu.recordsMenu(records);
             break;
           }
           case "3": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
             clearAll();
             delaySecond();
             System.out.println(SHOW_ALL_MENU_CATEGORY);
@@ -154,10 +189,29 @@ public class Submenu {
             break;
           }
           case "4": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
             clearAll();
             delaySecond();
             System.out.println(SHOW_ALL_MENU_AMOUNT);
             Output.printList(Operations.sortByAmount(records));
+            break;
+          }
+          case "5": {
+            File file = new File("src/classes/1.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clearAll();
+            delaySecond();
+            Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
+            System.out.println(LEGEND);
+            System.out.println(SHOW_SUB_MENU_CHART);
+//            System.out.println(SHOW_ALL_MENU_CHART_DATE);
             break;
           }
         }

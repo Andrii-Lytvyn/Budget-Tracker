@@ -1,6 +1,8 @@
 import classes.*;
 import classes.Record;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +14,7 @@ public class BudgetTracker {
   public static List<Record> records = new ArrayList<>();
   public static List<Category> categories = new ArrayList<>();
 
-  public static void main(String[] args) throws IOException, ParseException, AWTException {
+  public static void main(String[] args) throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
     //File budgetFile = new File("src/res/budget.txt");
     // IOCrypto.parseFileUnencrypted(budgetFile, records);
     File loginFile = new File("src/res/login.txt");
@@ -66,6 +68,6 @@ public class BudgetTracker {
     Submenu.delaySecond();
     Output.printList(records);
     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
-    System.out.println(Submenu.SHOW_SUB_MENU_CHART);
+    Submenu.recordsMenu(records);
   }
 }

@@ -48,6 +48,22 @@ public class Output {
     }
   }
 
+  public static void printFinance(List<Record> records){
+    double balance = Operations.calcBalance(records, Operations.getMinData(records),
+            Operations.getMaxData(records));
+    double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records),
+            Operations.getMaxData(records));
+    double income = balance + expenses;
+    System.out.println(Colors.WHITE_BRIGHT + "BALANCE: " + Colors.RESET
+            + Colors.GREEN + balance + Colors.RESET
+            + Colors.WHITE + " Expenses: " + Colors.RESET
+            + Colors.RED + expenses +Colors.RESET
+            + Colors.WHITE + " Income: " + Colors.RESET
+            + Colors.GREEN + income + Colors.RESET
+            + "\n")
+    ;
+  }
+
   /**
    * print Chart with percents of expenses by Users
    *

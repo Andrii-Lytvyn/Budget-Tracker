@@ -36,12 +36,7 @@ public class BudgetTracker {
     Submenu.printHeader();
     Submenu.delaySecond();
     Output.printList(records);
-    double balance = Operations.calcBalance(records, Operations.getMinData(records),
-        Operations.getMaxData(records));
-    double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records),
-        Operations.getMaxData(records));
-    double income = balance + expenses;
-    System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+    Output.printFinance(records);
     System.out.println(Submenu.SHOW_ALL_MENU_MAIN);
     System.out.println(Submenu.SHOW_SYSTEM_MENU_MAIN);
     Submenu.recordsMenu(records, categories);

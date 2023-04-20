@@ -143,6 +143,8 @@ public class Submenu {
           +"\n"
           + Colors.BLUE_BACKGROUND + Colors.WHITE_BOLD_BRIGHT + " 1 - Main menu <┈┈┘  " + Colors.RESET + " ";
 
+
+
     public static void recordsMenu(List<Record> records, List<Category> categories)  throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       while (true) {

@@ -161,6 +161,11 @@ public class Submenu {
             Submenu.printHeader();
             Submenu.delaySecond();
             Output.printList(Operations.sortByID(records));
+            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double income = balance + expenses;
+            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+            Submenu.recordsMenu(records,categories);
             System.out.println(SHOW_ALL_MENU_ID);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
@@ -176,6 +181,11 @@ public class Submenu {
             Submenu.printHeader();
             delaySecond();
             Output.printList(Operations.sortByUser(records));
+            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double income = balance + expenses;
+            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+            Submenu.recordsMenu(records, categories);
             System.out.println(SHOW_ALL_MENU_USER);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
@@ -191,6 +201,10 @@ public class Submenu {
             Submenu.printHeader();
             delaySecond();
             Output.printList(Operations.sortByCategory(records));
+            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double income = balance + expenses;
+            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
             System.out.println(SHOW_ALL_MENU_CATEGORY);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
@@ -206,6 +220,11 @@ public class Submenu {
             Submenu.printHeader();
             delaySecond();
             Output.printList(Operations.sortByAmount(records));
+            double balance = Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double expenses = -1 * Operations.calcExpensesPeriod(records, Operations.getMinData(records), Operations.getMaxData(records));
+            double income = balance + expenses;
+            System.out.println("Balance: " + balance + " Expenses: " + expenses + " Income: " + income);
+            System.out.println(SHOW_ALL_MENU_CATEGORY);
             System.out.println(SHOW_ALL_MENU_AMOUNT);
             System.out.println(SHOW_SYSTEM_MENU_MAIN);
             break;
@@ -219,6 +238,9 @@ public class Submenu {
             clearAll();
             delaySecond();
             Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
+
+            System.out.println("Balance: " + Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+
             System.out.println(LEGEND);
             System.out.println(SHOW_ALL_MENU_CHART_DATE);
             System.out.println(SHOW_SUB_MENU_CHART);
@@ -233,6 +255,9 @@ public class Submenu {
             clearAll();
             delaySecond();
             Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
+
+            System.out.println("Balance: " + Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
             break;
@@ -246,7 +271,8 @@ public class Submenu {
             clearAll();
             delaySecond();
             Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
-            System.out.println(Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
+
+            System.out.println("Balance: " + Operations.calcBalance(records, Operations.getMinData(records), Operations.getMaxData(records)));
 
             System.out.println(LEGEND);
             System.out.println(SHOW_SUB_MENU_CHART);
@@ -363,7 +389,7 @@ public class Submenu {
     Calendar today = Calendar.getInstance();
     Date currentDate = today.getTime();
     Date stDate = currentDate;
-    String categoryName = "";
+    String categoryName = "Income";
     boolean income = false;
     int multiply = 1;
     int id = Record.getNewRecordId(records);

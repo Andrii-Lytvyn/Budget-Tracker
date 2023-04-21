@@ -394,7 +394,7 @@ public class Menu {
    * @throws ParseException if illegal Date format
    */
   public static void addRecord(List<Record> records, List<Category> categories)
-      throws IOException, ParseException {
+      throws IOException, ParseException, UnsupportedAudioFileException, LineUnavailableException, AWTException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
     Record record = new Record();
@@ -439,8 +439,10 @@ public class Menu {
     while (true) {
       String command = br.readLine();
       if (command.equalsIgnoreCase("r")) {
+        soundClick();
         return;
       } else if (command.equalsIgnoreCase("s")) {
+        soundClick();
         record.setId(id);
         record.setUser(Users.getUserName());
         record.setDate(stDate);
@@ -467,7 +469,7 @@ public class Menu {
    * @throws IOException IO error
    */
   public static void editRecord(List<Record> records, List<Category> categories)
-      throws IOException {
+      throws IOException, UnsupportedAudioFileException, LineUnavailableException, AWTException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     System.out.print("Input ID of record: ");
     boolean income = false;
@@ -516,8 +518,10 @@ public class Menu {
     while (true) {
       String command = br.readLine();
       if (command.equalsIgnoreCase("r")) {
+        soundClick();
         return;
       } else if (command.equalsIgnoreCase("s")) {
+        soundClick();
         for (Record record : records) {
           if (record.getId() == id) {
             if (categoryName.equals(record.getCategory())) {

@@ -30,7 +30,7 @@ public class TestDateOperations {
     records.add(r2);
     records.add(r3);
 
-    Assertions.assertEquals(dateFormat.parse("09.10.2023"), Operations.getMinData(records));
+    Assertions.assertEquals(dateFormat.parse("09.10.2023"), Operations.getMinDate(records));
   }
 
   @Test
@@ -46,7 +46,7 @@ public class TestDateOperations {
     records.add(r2);
     records.add(r3);
 
-    assertEquals(dateFormat.parse("13.10.2023"), Operations.getMaxData(records));
+    assertEquals(dateFormat.parse("13.10.2023"), Operations.getMaxDate(records));
   }
 
   @Test

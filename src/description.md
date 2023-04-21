@@ -7,11 +7,8 @@
 # Output.java
 * Output methods, Chart diagrams... 
 ---
-# Submenu.java
-* Edit records, Add records, Delete records ...
----
 # Menu.java
-* ?
+* Edit records, Add records, Delete records ...
 ---
 # Users.java
 * Class of users - getters, setters constructor and methods for Users
@@ -23,113 +20,119 @@
 * Class of Record - getters, setters constructor and methods for Categories
 * main data structure
 ---
-# I_O_Crypto.java
+# IOCrypto.java
 * Input output operations and encryption of data files
 ---
 
 
 ## Operations.java
 
-### 1. public static String dateToString(Date date)
+### public static String dateToString(Date date)
 * Convert Date to String with pattern "dd.MM.yyyy"
 ---
-### 2. public static Date stringToDate(String string)
+### public static Date stringToDate(String string)
 * Convert String to Date with pattern "dd.MM.yyyy"
 ---
-### 3. public static double calcBalance(List<Record> records, Date dateBegin, Date dateEnd)
+### public static double calcBalance(List<Record> records, Date dateBegin, Date dateEnd)
 * Calculate payment balance in period
 ---
-### 4. public static double calcExpensesPeriod(List<Record> records, Date dateBegin, Date dateEnd) 
+### public static double calcExpensesPeriod(List<Record> records, Date dateBegin, Date dateEnd) 
 * Calculate Expenses in period
+* dateBegin - must be one day before of first day of period
+* dateEnd must be one day after last day of period
 ---
-### 5. public static double expensesByUser(List<Record> records, String user, Date dateBegin, Date dateEnd)
+### public static double expensesByUser(List<Record> records, String user, Date dateBegin, Date dateEnd)
 * Calculate expenses in period by User
+
+* dateBegin - must be one day before of first day of period
+* dateEnd must be one day after last day of period
 ---
-### 6. public static double expensesByCategory(List<Record> records, String category, Date dateBegin, Date dateEnd)
+### public static double expensesByCategory(List<Record> records, String category, Date dateBegin, Date dateEnd)
 * Calculate expenses in period by Category
+*
+* dateBegin - must be one day before of first day of period
+* dateEnd must be one day after last day of period
 ---
-### 7. public static double expensesByDate(List<Record> records, Date date)
+### public static double expensesByDate(List<Record> records, Date date)
 * Calculate expenses in period by Date
 ---
-### 8. public static List<Record> sortByID(List<Record> records, Date dateBegin, Date dateEnd)
-* Sort part of LIst of Records by ID in period
----
-### 9. public static List<Record> sortByID(List<Record> records)
+### public static List<Record> sortByID(List<Record> records)
 * Sort part of LIst of by ID ALL Records
 ---
-### 10. public static List<Record> sortByDate(List<Record> records, Date dateBegin, Date dateEnd)
-* Sort part of LIst of Records by Date in period
----
-### 11. public static List<Record> sortByDate(List<Record> records)
+### public static List<Record> sortByDate(List<Record> records)
 * Sort LIst of All Records by Date
 ---
-### 12. public static List<Record> sortByUser(List<Record> records, Date dateBegin, Date dateEnd)
-* Sort part of LIst of Records by User in period
----
-### 13. public static List<Record> sortByUser(List<Record> records)
+### public static List<Record> sortByUser(List<Record> records)
 * Sort LIst of All Records by User
 ---
-### 14. public static List<Record> sortByCategory(List<Record> records, Date dateBegin, Date dateEnd)
-* Sort part of LIst of Records by Category in period
----
-### 15. public static List<Record> sortByCategory(List<Record> records)
+### public static List<Record> sortByCategory(List<Record> records)
 * Sort LIst of All Records by Category
 ---
-### 16. public static List<Record> sortByAmount(List<Record> records, Date dateBegin, Date dateEnd)
-* Sort part of LIst of Records by Amount in period
----
-### 17. public static List<Record> sortByAmount(List<Record> records)
+### public static List<Record> sortByAmount(List<Record> records)
 * Sort LIst of All Records by Amount
 ---
-### 18. public static List<Date> datesBetween(Date dateBegin, Date dateEnd)
+### public static List<Date> datesBetween(Date dateBegin, Date dateEnd)
 * Make List of dates one by one between two dates
+* dateBegin - must be one day before of first day of period
+* dateEnd must be one day after last day of period
 ---
-### 19. public static Date getMaxData(List<Record> records)
+### public static Date getMaxDate(List<Record> records)
 * get Maximum date in records
 ---
-### 20. public static Date getMinData(List<Record> records)
+### public static Date getMinDate(List<Record> records)
 * get Minimum date in records
 ---
 
 ## Output.java
-### 21. public static void printList(List<Record> records)
+### public static void printList(List<Record> records)
 * Print table with list of records
 ---
-### 22. public static void chartCategory(List<Record> records, List<Category> categories, Date dateBegin, Date dateEnd)
-* print Chart with percents of expenses by Category 
+### public static void chartCategory(List<Record> records, List<Category> categories, Date dateBegin, Date dateEnd)
+* print Chart with percents of expenses by Category
+* dateBegin - must be one day before of first day of period
+* dateEnd must be one day after last day of period
 ---
-### 23. public static void chartUser(List<Record> records, List<String> users,
+### public static void chartUser(List<Record> records, List<String> users,
 * print Chart with percents of expenses by Users
+* dateBegin - must be one day before of first day of period
+* dateEnd must be one day after last day of period
 ---
-### 24. public static void chartDate(List<Record> records, Date dateBegin, Date dateEnd)
+### public static void chartDate(List<Record> records, Date dateBegin, Date dateEnd)
 * print Chart with percents of expenses by Data
+* dateBegin - must be one day before of first day of period
+* dateEnd must be one day after last day of period
 ---
+### public static void printFinance(List<Record> records)
+* print calculation of Balance, Expanses and Income
 
-## I_O_Crypto.java
-### 25. public static void makeCrypto(List<Record> records)
+## IOCrypto.java
+### public static void makeCrypto(List<Record> records)
 * Overwrites the sheet character-by-character by shifting the ASCII code by the number when CRYPTO > 0 to the right
 * When CRYPTO < 0 to the left
 ---
-### 26. public static void addInfoFromFileToList(File cryptoFile)
-* Метод записывает всю информацию из файла в лист. Дешифрует его. Лист изначально очищается.
----
-### 27. public static void makeUnCrypt(File cryptoFile, List<Record> records)
-* Метод по расшифровке файла. Проверяет не пустой ли файл. Если нет расшифровывает и отображает записи.
+
+### public static void makeUnCrypt(File cryptoFile, List<Record> records)
+* Methods decrypt file, parse it and add records to ListRecord.
+* Use methods parseRecordFromString().
 ---  
-### 28. public static void parseRecordFromString(String line, List<Record> records)
-* Parse and add record from String
+### public static void parseRecordFromString(String line, List<Record> records)
+* Parse and add record from String to List Record
 ---
-### 29. public static void readCrypted(File cryptoFile)
-* Метод читает зашифрованные записи из файла
---- 
-### 30. public static String recordToString(Record record)
+### parseRecordFromString(String line, List<Record> records)
 * Make string from Record
+* Parse and add record from String to List Record.
 ---
-### 31. public static void makeOutputFile(List<Record> records)
-* Make output file from record list...
+### public static void parseRecordFromString(String line, List<Record> records)
+* Parse and add record from String to List Record.
 ---
-### 32. public static void parseFileUncrypted(File cryptoFile, List<Record> records) throws IOException, ParseException {
-* parse uncrypted file of records for tests
+### public static String recordToCryptoString(Record record)
+* Make record to Crypto String
+---
+### public static void makeNewOutputCryptoFile(List<Record> records, List<String> list)
+* Method make new Output crypto file
+---
+### public static void makeOutputCryptoFile(List<String> list)
+* Make output encrypted file from encrypted List
 ---
 
 
@@ -153,7 +156,7 @@
 * Get record Comment for record
 ---
 ### public void setId(int id) 
-* Set record Id
+* Set record id
 ---
 ### public void setDate(Date date) 
 * Set record Date when record is made
@@ -176,21 +179,14 @@
 
 ## Category.java
 
-### public void setTitle(String title) 
-* Set Category Title
-* ---
-### public void setAllowed(boolean allowed) 
-* Set flag Allowed - for parents and for children aviable different categories
-* ---
-### public int getId() 
-* Get category Id
----
 ### public String getTitle()
 * Get category Title
 ---
-### public boolean isAllowed() 
-* Get flag Allowed need to know show this category to children or no
----
+
 
 
 ## Users.java
+### public static void showLogin(File usersFile)
+* Methods read login and password from file, check it
+---
+### 

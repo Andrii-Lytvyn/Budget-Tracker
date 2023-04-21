@@ -175,6 +175,35 @@ To use the program, simply run the `main` method on the file `BudgetTracker` in 
 * Make output encrypted file from encrypted List
 ---
 
+## Menu.java
+
+### public static void printHeader()
+* Print Header for table of records
+---
+### public static void delayMain()
+* Make delay for 2000ms
+---
+### public static void delaySecond()
+* make delay for 100ms
+---
+### public static void clearAll()
+* clear screen
+---
+### public static void recordsMenu(List<Record> records, List<Category> categories)
+* Main menu for all program
+---
+### public static void recordsMenu(List<Record> records, List<Category> categories)
+* make sound "mouse click"
+---
+### public static void addRecord(List<Record> records, List<Category> categories)
+* Ask user and then add new record to List of records
+---
+### public static void editRecord(List<Record> records, List<Category> categories)
+* Edit existing record, only fields: Income/Expenses; Comment; Amount; Category
+---
+### public static void deleteRecord(List<Record> records)
+* Delete record from list of records.
+---
 
 ## Record.java
 ### public int getId()

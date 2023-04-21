@@ -226,7 +226,7 @@ public class Operations {
    * @param records List of Record with payments
    * @return Minimum date one before first day from List of records
    */
-  public static Date getMinData(List<Record> records) {
+  public static Date getMinDate(List<Record> records) {
     Date minDate = records.stream()
         .map(Record::getDate)
         .min(Date::compareTo)
@@ -244,7 +244,7 @@ public class Operations {
    * @param records List of Record with payments
    * @return Maximum date one day after last day from List of records
    */
-  public static Date getMaxData(List<Record> records) {
+  public static Date getMaxDate(List<Record> records) {
     Date maxDate = records.stream()
         .map(Record::getDate)
         .max(Date::compareTo)

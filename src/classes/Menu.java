@@ -262,7 +262,7 @@ public class Menu {
             clip.start();
             clearAll();
             delaySecond();
-            Output.chartDate(records, Operations.getMinData(records), Operations.getMaxData(records));
+            Output.chartDate(records, Operations.getMinDate(records), Operations.getMaxDate(records));
 
             Output.printFinance(records);
 
@@ -279,7 +279,7 @@ public class Menu {
             clip.start();
             clearAll();
             delaySecond();
-            Output.chartCategory(records, categories, Operations.getMinData(records), Operations.getMaxData(records));
+            Output.chartCategory(records, categories, Operations.getMinDate(records), Operations.getMaxDate(records));
 
             Output.printFinance(records);
 
@@ -296,7 +296,7 @@ public class Menu {
             clip.start();
             clearAll();
             delaySecond();
-            Output.chartUser(records, Users.userNames, Operations.getMinData(records), Operations.getMaxData(records));
+            Output.chartUser(records, Users.userNames, Operations.getMinDate(records), Operations.getMaxDate(records));
 
             Output.printFinance(records);
 

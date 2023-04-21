@@ -40,8 +40,8 @@ public class Operations {
    * Calculate payment balance in period
    *
    * @param records   List of Record with payments
-   * @param dateBegin Begin of payments period
-   * @param dateEnd   End of payments period
+   * @param dateBegin Begin of payments period minus one day
+   * @param dateEnd   End of payments period plus one day
    * @return Sum of payments in this period
    */
   public static double calcBalance(List<Record> records, Date dateBegin, Date dateEnd) {
@@ -56,8 +56,8 @@ public class Operations {
    * Calculate Expenses in period
    *
    * @param records   List of Record with payments
-   * @param dateBegin Begin of payments period
-   * @param dateEnd   End of payments period
+   * @param dateBegin Begin of payments period minus one day
+   * @param dateEnd   End of payments period plus one day
    * @return Sum of expenses in this period
    */
   public static double calcExpensesPeriod(List<Record> records, Date dateBegin, Date dateEnd) {
@@ -74,8 +74,8 @@ public class Operations {
    *
    * @param records   List of Record with payments
    * @param user      Username to find their expenses
-   * @param dateBegin Begin of payments period
-   * @param dateEnd   End of payments period
+   * @param dateBegin Begin of payments period minus one day
+   * @param dateEnd   End of payments period plus one day
    * @return Sum of expenses by User in this period
    */
   public static double expensesByUser(List<Record> records, String user, Date dateBegin,
@@ -94,8 +94,8 @@ public class Operations {
    *
    * @param records   List of Record with payments
    * @param category  Category to find expenses by it
-   * @param dateBegin Begin of payments period
-   * @param dateEnd   End of payments period
+   * @param dateBegin Begin of payments period minus one day
+   * @param dateEnd   End of payments period plus one day
    * @return Sum of expenses by User in this period
    */
   public static double expensesByCategory(List<Record> records, String category, Date dateBegin,
@@ -203,7 +203,7 @@ public class Operations {
    *
    * @param dateBegin Begin of payments period inclusive
    * @param dateEnd   End of payments period exclusive
-   * @return List of dates
+   * @return List of dates first inclusive, last exclusive
    */
   public static List<Date> datesBetween(Date dateBegin, Date dateEnd) {
     List<Date> dates = new ArrayList<>();
@@ -224,7 +224,7 @@ public class Operations {
    * get Minimum date in records
    *
    * @param records List of Record with payments
-   * @return Minimum date from List of records
+   * @return Minimum date one before first day from List of records
    */
   public static Date getMinData(List<Record> records) {
     Date minDate = records.stream()
@@ -242,7 +242,7 @@ public class Operations {
    * get Maximum date in records
    *
    * @param records List of Record with payments
-   * @return Maximum date from List of records
+   * @return Maximum date one day after last day from List of records
    */
   public static Date getMaxData(List<Record> records) {
     Date maxDate = records.stream()

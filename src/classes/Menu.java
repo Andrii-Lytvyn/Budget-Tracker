@@ -189,8 +189,8 @@ public class Menu {
   /**
    * Main menu for all program
    *
-   * @param records
-   * @param categories
+   * @param records    List of Record with payments (can be sorted and filtered before)
+   * @param categories List of Categories
    * @throws ParseException Signals that an error has been reached unexpectedly while parsing.
    * @throws UnsupportedAudioFileException File format not valid
    * @throws IOException File input error

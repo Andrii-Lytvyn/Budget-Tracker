@@ -24,7 +24,7 @@ public class BudgetTracker {
     File loginFile = new File("src/res/login.txt");
     File crypto = new File("src/res/crypto.txt");
 
-
+    System.out.println();
     Users.showLogin(loginFile);
     Menu.clearAll();
 
@@ -40,8 +40,5 @@ public class BudgetTracker {
     System.out.println(Menu.SHOW_ALL_MENU_MAIN);
     System.out.println(Menu.SHOW_SYSTEM_MENU_MAIN);
     Menu.recordsMenu(records, categories);
-
-
-
   }
 }

@@ -62,6 +62,19 @@ public class Record {
   public Record() {
   }
 
+  public Record(int id) {
+    this.id = id;
+  }
+
+  public Record(int id, Date date, String user, String category, String comment, double amount) {
+    this.id = id;
+    this.date = date;
+    this.user = user;
+    this.category = category;
+    this.comment = comment;
+    this.amount = amount;
+  }
+
   /**
    * Calculate new ID in List of records
    *

@@ -33,7 +33,7 @@ public class Output {
       Date dateBegin, Date dateEnd) {
     String color = Colors.RESET;
     System.out.println(Colors.WHITE_BRIGHT + "┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒");
-    System.out.println(Colors.WHITE_BRIGHT +"┃     DATE         ┃                                           AMOUNT                                          ┃");
+    System.out.println(Colors.WHITE_BRIGHT +"┃     CATEGORY     ┃                                           AMOUNT                                          ┃");
     System.out.println(Colors.WHITE_BRIGHT +"┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┸┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚"+Colors.RESET);
     double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (Category category : categories) {
@@ -86,7 +86,7 @@ public class Output {
       Date dateBegin, Date dateEnd) {
     String color = Colors.RESET;
     System.out.println(Colors.WHITE_BRIGHT + "┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┰┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒");
-    System.out.println(Colors.WHITE_BRIGHT +"┃     DATE      ┃                                           AMOUNT                                                            ┃");
+    System.out.println(Colors.WHITE_BRIGHT +"┃     USER      ┃                                           AMOUNT                                                            ┃");
     System.out.println(Colors.WHITE_BRIGHT +"┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┸┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚"+Colors.RESET);
     double totalEx = -1 * Operations.calcExpensesPeriod(records, dateBegin, dateEnd);
     for (String user : users) {
@@ -144,4 +144,5 @@ public class Output {
       System.out.println(Colors.WHITE_BRIGHT + " " + Colors.WHITE_BRIGHT + dateSum + Colors.RESET + " (" + percent + "% )");
     }
   }
+
 }

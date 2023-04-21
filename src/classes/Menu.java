@@ -78,16 +78,14 @@ public class Menu {
       + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " e - Edit " + Colors.RESET + " "
       + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " a - Add " + Colors.RESET + " "
       + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " d - Delete " + Colors.RESET + " "
-      + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " q - Exit " + Colors.RESET + " "
-      + Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SURPRISE " + Colors.RESET + " ";
+      + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " q - Exit " + Colors.RESET + " ";
   public static final String SHOW_SYSTEM_MENU = ""
       + "\n\n"
       + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " r - Return " + Colors.RESET + " "
       + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " e - Edit " + Colors.RESET + " "
       + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " a - Add " + Colors.RESET + " "
       + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " d - Delete " + Colors.RESET + " "
-      + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " q - Exit " + Colors.RESET + " "
-      + Colors.WHITE_BACKGROUND_BRIGHT + Colors.BLACK_BOLD + " s - SURPRISE " + Colors.RESET + " ";
+      + Colors.WHITE_BACKGROUND + Colors.BLACK_BOLD + " q - Exit " + Colors.RESET + " ";
   public static final String SHOW_ALL_MENU_MAIN = ""
       + Colors.YELLOW_BRIGHT + "SORT BY:      " + Colors.YELLOW_BACKGROUND
       + Colors.WHITE_BOLD_BRIGHT + " 1-Id " + Colors.RESET + " "
@@ -201,6 +199,8 @@ public class Menu {
       throws IOException, ParseException, AWTException, UnsupportedAudioFileException, LineUnavailableException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     while (true) {
+      System.out.println();
+      System.out.println();
       System.out.println();
       System.out.print(Colors.GRAY + "Choose command: " + Colors.RESET);
       String key = br.readLine();
@@ -426,7 +426,7 @@ public class Menu {
       for (int i = 0; i < categories.size(); ++i) {
         System.out.println("" + i + " " + categories.get(i).getTitle());
       }
-      System.out.print("Choose category from list (1-10):      ");
+      System.out.print("Choose category from list (0-9):      ");
       int cat = Integer.parseInt(br.readLine());
       categoryName = categories.get(cat).getTitle();//get category by number and get title
     }
@@ -471,7 +471,7 @@ public class Menu {
   public static void editRecord(List<Record> records, List<Category> categories)
       throws IOException, UnsupportedAudioFileException, LineUnavailableException, AWTException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    System.out.print("Input ID of record: ");
+    System.out.print(Colors.BLUE_BRIGHT + "Input ID of record:                       |   ");
     boolean income = false;
     double amount = 0;
     int multiply = 1;
@@ -480,7 +480,7 @@ public class Menu {
 
     int id = Integer.parseInt(br.readLine());
 
-    System.out.print("Want you change INCOME/EXPENSES? [y/n] ");
+    System.out.print("Do you want to change INCOME/EXPENSES? [y/n]  |   ");
     String input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
       System.out.print(Colors.BLUE + "Is this income or expenses (i/e):     ");
@@ -489,19 +489,19 @@ public class Menu {
         income = true;
       }
     }
-    System.out.print("Do you want change comment? [y/n] ");
+    System.out.print("Do you want to change Comment? [y/n]      |   ");
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
-      System.out.print(Colors.BLUE + "Input comment:     ");
+      System.out.print(Colors.WHITE_BRIGHT + "Input comment:     ");
       comment = br.readLine();
     }
-    System.out.print("Do you want change Category? [y/n] ");
+    System.out.print(Colors.BLUE + "Do you want change Category? [y/n] ");
     input = br.readLine();
     if (input.equalsIgnoreCase("y")) {
       for (int i = 0; i < categories.size(); ++i) {
         System.out.println("" + i + " " + categories.get(i).getTitle());
       }
-      System.out.print("Choose category from list (1-10):      ");
+      System.out.print(Colors.WHITE_BRIGHT + "Choose category from list (0-9):      ");
       int cat = Integer.parseInt(br.readLine());
       categoryName = categories.get(cat).getTitle();//get category by number and get title
     }

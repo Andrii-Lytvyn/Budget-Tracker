@@ -2,8 +2,7 @@ import classes.*;
 import classes.Menu;
 import classes.Record;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +23,8 @@ public class BudgetTracker {
     File loginFile = new File("src/res/login.txt");
     File crypto = new File("src/res/crypto.txt");
 
+    intro();
+
     System.out.println();
     Users.showLogin(loginFile);
     Menu.clearAll();
@@ -40,5 +41,17 @@ public class BudgetTracker {
     System.out.println(Menu.SHOW_ALL_MENU_MAIN);
     System.out.println(Menu.SHOW_SYSTEM_MENU_MAIN);
     Menu.recordsMenu(records, categories);
+
+
+  }
+  public static void intro () throws UnsupportedAudioFileException, IOException, LineUnavailableException, AWTException {
+    File file = new File("src/classes/11.wav");
+    AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+    Clip clip = AudioSystem.getClip();
+    clip.open(audioStream);
+    clip.start();
+    Intro.circle_1();
+    clip.close();
+    Menu.delaySecond();
   }
 }

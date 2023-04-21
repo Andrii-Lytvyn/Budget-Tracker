@@ -31,6 +31,8 @@ _____________________
 
 [Andrii Golik](https://github.com/GolikAndrii)
 
+**Support us: SPARKASSE DE 54 4657 7465 4563 9684**
+
 
 ## DESCRIPTION PROJECT
 _____________________
@@ -40,30 +42,28 @@ _____________________
 ## MAIN STRUCTURE
 _____________________
 
- Folder          | Name               | Description
------------------|--------------------|-----------
-src/classes      | Category.java      | Class Category сontains a list of all categories
-src/classes      | IOCrypto.java      | Data encryption class                     
-src/classes      | Menu.java          | Main-menu and Submenu for Project
-src/classes      | Colors.java        | Class with several colors 
-src/classes      | Users.java         | Class of users - getters, setters constructor and methods for Users
-src/classes      | Output.java        | Output methods, Chart diagrams...               
-src/classes      | Operations         | Class with sort and others operations
-src/classes      | Users.java         | Class of users - getters, setters constructor and methods for Users
-src/res          | login.txt          | List of Users and passwords. Decrypted
-src/res          | crypto.txt         | Crypted items
-src/res/sounds   | sound.wav          | Sound for main screen of Presentation
-src/tests        | TestDateOperations | tests for operations with dates
-src/tests        | TestFinance        | tests for operations with finance
+| Folder      | Name               | Description|
+-------------|--------------------|-----------
+| src/classes | Category.java      | Class Category сontains a list of all categories|
+| src/classes | IOCrypto.java      | Data encryption class                     |
+| src/classes | Menu.java          | Main-menu and Submenu for Project|
+| src/classes | Colors.java        | Class with several colors |
+| src/classes | Users.java         | Class of users - getters, setters constructor and methods for Users|
+| src/classes | Output.java        | Output methods, Chart diagrams...               |
+| src/classes | Operations         | Class with sort and others operations|
+| src/classes | Users.java         | Class of users - getters, setters constructor and methods for Users|
+| src/res     | login.txt          | List of Users and passwords. Decrypted|
+| src/res     | crypto.txt         | Crypted items|
+| src/classes | 1.wav, 11.wav      | Sound for main screen of Presentation|
+| src/tests   | TestDateOperations | tests for operations with dates|
+| src/tests   | TestFinance        | tests for operations with finance|
 
-## USAGE 1
+# USAGE
 
 To use the program, simply run the `main` method on the file `BudgetTracker` in main folder
 
 
 ## METHODS DESCRIPTION
-
-
 
 ## Operations.java
 
@@ -285,3 +285,8 @@ To use the program, simply run the `main` method on the file `BudgetTracker` in 
 ---
 ### public void checkExpensesByDate()
 * * test calculations of Expenses by specified Date
+
+
+# USAGE
+
+To use the program, simply run the `main` method on the file `BudgetTracker` in main folder
